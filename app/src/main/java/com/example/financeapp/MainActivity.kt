@@ -56,6 +56,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        closeDrawerLayout()
         // Handle navigation view item clicks here.
         when (item.itemId) {
             R.id.nav_camera -> {
@@ -81,4 +82,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
     }
+
+    fun closeDrawerLayout() = drawer_layout.closeDrawer(GravityCompat.START)
 }
