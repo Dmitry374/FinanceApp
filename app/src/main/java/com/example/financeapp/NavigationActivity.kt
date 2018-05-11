@@ -6,16 +6,32 @@ import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.app_bar_main.*
+import com.example.financeapp.NavigationScreenKey.Companion.MAIN_FRAGMENT
+import dagger.android.AndroidInjection
+import kotlinx.android.synthetic.main.activity_navigation.*
+import kotlinx.android.synthetic.main.app_bar_navigation.*
+import ru.terrakok.cicerone.Router
+import javax.inject.Inject
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class NavigationActivity : StorageActivity(), NavigationView.OnNavigationItemSelectedListener {
+
+    @Inject
+    lateinit var router: Router
+
+    lateinit var itemName: String
+
+    companion object {
+        private const val LOG_TAG = "NavigationActivity::"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        AndroidInjection.inject(this)
+
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_navigation)
         setSupportActionBar(toolbar)
 
         fab.setOnClickListener { view ->
@@ -35,6 +51,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
             drawer_layout.closeDrawer(GravityCompat.START)
         } else {
+            if (itemName != "Main"){
+                router.newRootScreen(NavigationScreenKey.MAIN_FRAGMENT)
+                itemName = "Main"
+            } else
             super.onBackPressed()
         }
     }
@@ -57,13 +77,18 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         closeDrawerLayout()
+        itemName = item.toString()
         // Handle navigation view item clicks here.
         when (item.itemId) {
-            R.id.nav_camera -> {
-                // Handle the camera action
+            R.id.nav_main -> {
+                router.replaceScreen(NavigationScreenKey.MAIN_FRAGMENT)
+                item.isChecked = true
+                Log.d("myLogs", "item = $item")
             }
-            R.id.nav_gallery -> {
-
+            R.id.nav_second -> {
+                router.replaceScreen(NavigationScreenKey.SECOND_FRAGMENT)
+                item.isChecked = true
+                Log.d("myLogs", "item = $item")
             }
             R.id.nav_slideshow -> {
 
@@ -77,11 +102,16 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_send -> {
 
             }
+            else -> {
+                Log.e(LOG_TAG, "Unknown left menu item selected ${item.itemId} ${item.title}")
+            }
         }
 
-        drawer_layout.closeDrawer(GravityCompat.START)
+//        drawer_layout.closeDrawer(GravityCompat.START)
         return true
     }
 
-    fun closeDrawerLayout() = drawer_layout.closeDrawer(GravityCompat.START)
+    private fun closeDrawerLayout() = drawer_layout.closeDrawer(GravityCompat.START)
+
+    override fun getDefaultFragment() = MAIN_FRAGMENT
 }

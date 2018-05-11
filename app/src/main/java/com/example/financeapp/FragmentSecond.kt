@@ -6,11 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-
-class FragmentMain : Fragment() {
+/**
+ * Created by Lenovo on 11.05.2018.
+ */
+class FragmentSecond : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater!!.inflate(R.layout.fragment_main, container, false)
+        val view = inflater!!.inflate(R.layout.fragment_second, container, false)
         return view
     }
 
@@ -26,4 +28,5 @@ class FragmentMain : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
     }
+
 }
