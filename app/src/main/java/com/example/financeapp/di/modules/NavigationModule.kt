@@ -22,9 +22,9 @@ class NavigationModule {
 
     @Provides
     @Singleton
-    fun provideNavigationRouter() = mCicerone.router
+    fun provideNavigationRouter() = mCicerone.router!!
 
     @Provides
     @Singleton
-    fun provideNavigatorHolder() = mCicerone.navigatorHolder
+    fun provideNavigatorHolder() = mCicerone.navigatorHolder!!
 }
