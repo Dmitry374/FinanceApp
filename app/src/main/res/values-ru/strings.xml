@@ -6,6 +6,8 @@
     <string name="openDrawer">open_drawer</string>
     <string name="closeDrawer">close_drawer</string>
 
+    <string name="action_settings">Настройки</string>
+
     <!-- Navigation Drawer menu labels -->
     <string name="nav_main">Главная</string>
     <string name="nav_records">Записи</string>
