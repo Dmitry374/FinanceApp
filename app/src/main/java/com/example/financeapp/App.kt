@@ -10,11 +10,13 @@ import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
 import javax.inject.Inject
 
-
 class App : Application(), HasActivityInjector {
 
     @Inject
     lateinit var activityDispatchingAndroidInjector: DispatchingAndroidInjector<Activity>
+
+//    @Inject
+//    lateinit var fragmentDispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
 
     private lateinit var mContext: Context
 
@@ -23,10 +25,12 @@ class App : Application(), HasActivityInjector {
         mContext = applicationContext
 
         DaggerAppComponent.builder()
-//                .contextModule(ContextModule(mContext))
+                .contextModule(ContextModule(mContext))
                 .build()
                 .inject(this)
     }
 
     override fun activityInjector(): AndroidInjector<Activity> = activityDispatchingAndroidInjector
+
+//    override fun fragmentInjector(): AndroidInjector<Fragment> = fragmentDispatchingAndroidInjector
 }

@@ -6,10 +6,6 @@ import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
-/**
- * Created by Dima on 10.05.2018.
- */
-
 @Module(includes = arrayOf(ContextModule::class))
 class ShowImageModule {
     @Singleton
