@@ -3,6 +3,7 @@ package com.example.financeapp
 import android.app.Activity
 import android.app.Application
 import android.content.Context
+import com.example.financeapp.di.component.AppComponent
 import com.example.financeapp.di.component.DaggerAppComponent
 import com.example.financeapp.di.modules.ContextModule
 import dagger.android.AndroidInjector
@@ -11,6 +12,10 @@ import dagger.android.HasActivityInjector
 import javax.inject.Inject
 
 class App : Application(), HasActivityInjector {
+
+    companion object {
+        lateinit var appComponent: AppComponent
+    }
 
     @Inject
     lateinit var activityDispatchingAndroidInjector: DispatchingAndroidInjector<Activity>
@@ -24,10 +29,11 @@ class App : Application(), HasActivityInjector {
         super.onCreate()
         mContext = applicationContext
 
-        DaggerAppComponent.builder()
+        appComponent = DaggerAppComponent.builder()
                 .contextModule(ContextModule(mContext))
                 .build()
-                .inject(this)
+
+        appComponent.inject(this)
     }
 
     override fun activityInjector(): AndroidInjector<Activity> = activityDispatchingAndroidInjector

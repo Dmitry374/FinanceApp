@@ -1,42 +1,43 @@
 package com.example.financeapp.ui.navigation
 
-import android.app.Fragment
 //import android.support.v4.app.Fragment
+import android.annotation.SuppressLint
+import android.app.Fragment
+import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
 import android.support.design.widget.NavigationView
 import android.support.design.widget.Snackbar
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
-import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.example.financeapp.AutorisationActivity
+import com.example.financeapp.GoogleApiClientBaseActivity
+import com.example.financeapp.R
 import com.example.financeapp.ui.custom.CircleTransform
 import com.example.financeapp.ui.main.FragmentMain
-import com.example.financeapp.ui.records.FragmentRecords
-import com.example.financeapp.R
-import dagger.android.AndroidInjection
-import dagger.android.AndroidInjector
+import com.google.android.gms.auth.api.Auth
+import com.google.android.gms.auth.api.signin.GoogleSignInResult
+import com.google.android.gms.common.ConnectionResult
+import com.google.android.gms.common.api.GoogleApiClient
 import kotlinx.android.synthetic.main.activity_navigation.*
 import kotlinx.android.synthetic.main.app_bar_navigation.*
-import javax.inject.Inject
-import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasFragmentInjector
 
 
-class NavigationActivity : AppCompatActivity(), HasFragmentInjector {
+class NavigationActivity : GoogleApiClientBaseActivity(), /*HasFragmentInjector,*/ GoogleApiClient.OnConnectionFailedListener {
 
-    @Inject
-    lateinit var fragmentDispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
+//    @Inject
+//    lateinit var fragmentDispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
 
-    @Inject
-    lateinit var handler: Handler
+//    @Inject
+//    lateinit var handler: Handler
 
     lateinit var navHeaderNavigation: View
 
@@ -45,11 +46,14 @@ class NavigationActivity : AppCompatActivity(), HasFragmentInjector {
     lateinit var imgHeaderBcgr: ImageView
     lateinit var imgProfile: ImageView
 
-    @Inject
-    lateinit var mainFragment: FragmentMain
+//    @Inject
+//    lateinit var mainFragment: FragmentMain
+//
+//    @Inject
+//    lateinit var recordsFragment: FragmentRecords
 
-    @Inject
-    lateinit var recordsFragment: FragmentRecords
+//    @Inject
+//    lateinit var mGoogleApiClient: GoogleApiClient
 
     private val urlNavHeaderBg = "http://api.androidhive.info/images/nav-menu-header-bg.jpg"
     private val urlProfileImg = "https://lh3.googleusercontent.com/eCtE_G34M9ygdkmOpYvCag1vBARCmZwnVS6rS5t4JLzJ6QgQSBquM0nuTsCpLhYbKljoyS-txg"
@@ -73,7 +77,7 @@ class NavigationActivity : AppCompatActivity(), HasFragmentInjector {
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
-        AndroidInjection.inject(this)
+//        AndroidInjection.inject(this)
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_navigation)
@@ -106,6 +110,19 @@ class NavigationActivity : AppCompatActivity(), HasFragmentInjector {
             CURRENT_TAG = TAG_MAIN
             loadHomeFragment()
         }
+
+        // Log Out
+        imgProfile.setOnClickListener {
+
+            Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback { status ->
+                if (status.isSuccess) {
+                    goLogInScreen()
+                } else {
+                    Toast.makeText(this, "Log Out", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+        }
     }
 
     /***
@@ -114,23 +131,102 @@ class NavigationActivity : AppCompatActivity(), HasFragmentInjector {
      * name, website, notifications action view (dot)
      */
     private fun loadNavHeader() {
-        // name, website
-        nameUser.text = "Ravi Tamada"
-        emailUser.text = "www.androidhive.info"
 
-        // loading header background image
-        Glide.with(this).load(urlNavHeaderBg)
-                .crossFade()
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .into(imgHeaderBcgr)
+        val opr = Auth.GoogleSignInApi.silentSignIn(mGoogleApiClient)
+        if (opr.isDone) {
+            val result = opr.get()
+            handleSignInResult(result)
+        } else {
+            opr.setResultCallback { googleSignInResult -> handleSignInResult(googleSignInResult) }
+        }
 
-        // Loading profile image
-        Glide.with(this).load(urlProfileImg)
-                .crossFade()
-                .thumbnail(0.5f)
-                .bitmapTransform(CircleTransform(this))
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .into(imgProfile)
+//        // name, website
+//        nameUser.text = "Ravi Tamada"
+//        emailUser.text = "www.androidhive.info"
+//
+//        // loading header background image
+//        Glide.with(this).load(urlNavHeaderBg)
+//                .bitmapTransform(BlurTransformation(this, 25))
+//                .crossFade()
+//                .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                .into(imgHeaderBcgr)
+//
+//        // Loading profile image
+//        Glide.with(this).load(urlProfileImg)
+//                .crossFade()
+//                .thumbnail(0.5f)
+//                .bitmapTransform(CircleTransform(this))
+//                .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                .into(imgProfile)
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun handleSignInResult(result: GoogleSignInResult) {
+        if (result.isSuccess) {
+            val account = result.signInAccount
+
+            /*
+            * nameUser = navHeaderNavigation.findViewById(R.id.nameUser)
+        emailUser = navHeaderNavigation.findViewById(R.id.emailUser)
+        imgHeaderBcgr = navHeaderNavigation.findViewById(R.id.img_header_bg)
+        imgProfile = navHeaderNavigation.findViewById(R.id.img_profile)
+            * */
+
+            nameUser.text = account!!.displayName
+            emailUser.text = account.email
+
+            Log.d("myLog", "getFamilyName() = " + account.familyName + " \n" +
+                    "getGivenName() = " + account.givenName)
+
+            Log.d("myLog", "account.getPhotoUrl() = " + account.photoUrl)
+
+            // loading header background image
+            Glide.with(this).load(R.drawable.nav_profile_bacground)
+//                        .bitmapTransform(BlurTransformation(this, 200))
+                    .crossFade()
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .into(imgHeaderBcgr)
+
+            if (account.photoUrl == null){
+
+//                imgHeaderBcgr.setImageResource(R.drawable.side_nav_bar)
+
+//                // loading header background image
+//                Glide.with(this).load(R.drawable.side_nav_bar)
+//                        .crossFade()
+//                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                        .into(imgHeaderBcgr)
+
+                // Loading profile image
+                Glide.with(this).load(R.drawable.profile_img)
+                        .crossFade()
+                        .thumbnail(0.5f)
+                        .bitmapTransform(CircleTransform(this))
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .into(imgProfile)
+
+            } else {
+
+                // Loading profile image
+                Glide.with(this).load(account.photoUrl)
+                        .crossFade()
+                        .thumbnail(0.5f)
+                        .bitmapTransform(CircleTransform(this))
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .into(imgProfile)
+
+            }
+
+
+        } else {
+            goLogInScreen()
+        }
+    }
+
+    private fun goLogInScreen() {
+        val intent = Intent(this, AutorisationActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(intent)
     }
 
     /***
@@ -344,5 +440,9 @@ class NavigationActivity : AppCompatActivity(), HasFragmentInjector {
             fab.hide()
     }
 
-    override fun fragmentInjector(): AndroidInjector<Fragment> = fragmentDispatchingAndroidInjector
+//    override fun fragmentInjector(): AndroidInjector<Fragment> = fragmentDispatchingAndroidInjector
+
+    override fun onConnectionFailed(connectionResult: ConnectionResult) {
+
+    }
 }

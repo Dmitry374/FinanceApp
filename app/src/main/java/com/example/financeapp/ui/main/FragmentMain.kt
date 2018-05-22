@@ -5,13 +5,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.financeapp.BaseFragment
 import com.example.financeapp.R
 import dagger.android.AndroidInjection
 
-class FragmentMain : Fragment() {
+class FragmentMain : BaseFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        AndroidInjection.inject(this)
+//        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
     }
 

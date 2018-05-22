@@ -7,20 +7,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import com.example.financeapp.BaseFragment
 import com.example.financeapp.R
 import com.squareup.picasso.Picasso
 import dagger.android.AndroidInjection
 import javax.inject.Inject
 
-class FragmentRecords : Fragment() {
+class FragmentRecords : BaseFragment() {
 
-    @Inject
-    lateinit var picasso: Picasso
+//    @Inject
+//    lateinit var picasso: Picasso
 
     lateinit var imgTest: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        AndroidInjection.inject(this)
+//        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
     }
 
