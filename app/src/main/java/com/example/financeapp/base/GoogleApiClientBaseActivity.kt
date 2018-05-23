@@ -1,11 +1,9 @@
-package com.example.financeapp
+package com.example.financeapp.base
 
 import android.os.Bundle
-import android.os.Handler
+import com.example.financeapp.App
 import com.example.financeapp.di.component.DaggerGoogleApiClientComponent
 import com.example.financeapp.di.modules.GoogleApiModule
-import com.example.financeapp.ui.main.FragmentMain
-import com.example.financeapp.ui.records.FragmentRecords
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
 import javax.inject.Inject

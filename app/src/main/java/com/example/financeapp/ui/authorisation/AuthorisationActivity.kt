@@ -1,26 +1,24 @@
-package com.example.financeapp
+package com.example.financeapp.ui.authorisation
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
-import com.example.financeapp.di.modules.GoogleApiModule
+import com.example.financeapp.R
+import com.example.financeapp.base.GoogleApiClientBaseActivity
 import com.example.financeapp.ui.navigation.NavigationActivity
 import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.auth.api.signin.GoogleSignInResult
-import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.SignInButton
-import com.google.android.gms.common.api.GoogleApiClient
-import kotlinx.android.synthetic.main.activity_autorisation.*
-import javax.inject.Inject
+import kotlinx.android.synthetic.main.activity_authorisation.*
 
-//class AutorisationActivity : BaseActivity(), GoogleApiClient.OnConnectionFailedListener, GoogleApiClient.ConnectionCallbacks {
-class AutorisationActivity : GoogleApiClientBaseActivity() {
+//class AuthorisationActivity : BaseActivity(), GoogleApiClient.OnConnectionFailedListener, GoogleApiClient.ConnectionCallbacks {
+class AuthorisationActivity : GoogleApiClientBaseActivity() {
 
     val SIGN_IN_CODE = 777
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_autorisation)
+        setContentView(R.layout.activity_authorisation)
 
         signInButtonGoogle.setSize(SignInButton.SIZE_WIDE)
         signInButtonGoogle.setColorScheme(SignInButton.COLOR_DARK)

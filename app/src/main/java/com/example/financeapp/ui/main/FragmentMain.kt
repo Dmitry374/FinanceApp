@@ -1,13 +1,11 @@
 package com.example.financeapp.ui.main
 
-import android.app.Fragment
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.financeapp.BaseFragment
+import com.example.financeapp.base.BaseFragment
 import com.example.financeapp.R
-import dagger.android.AndroidInjection
 
 class FragmentMain : BaseFragment() {
 

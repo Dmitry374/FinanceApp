@@ -18,8 +18,8 @@ import android.widget.TextView
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.example.financeapp.AutorisationActivity
-import com.example.financeapp.GoogleApiClientBaseActivity
+import com.example.financeapp.ui.authorisation.AuthorisationActivity
+import com.example.financeapp.base.GoogleApiClientBaseActivity
 import com.example.financeapp.R
 import com.example.financeapp.ui.custom.CircleTransform
 import com.example.financeapp.ui.main.FragmentMain
@@ -29,6 +29,7 @@ import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
 import kotlinx.android.synthetic.main.activity_navigation.*
 import kotlinx.android.synthetic.main.app_bar_navigation.*
+import javax.inject.Inject
 
 
 class NavigationActivity : GoogleApiClientBaseActivity(), /*HasFragmentInjector,*/ GoogleApiClient.OnConnectionFailedListener {
@@ -38,6 +39,9 @@ class NavigationActivity : GoogleApiClientBaseActivity(), /*HasFragmentInjector,
 
 //    @Inject
 //    lateinit var handler: Handler
+
+    @Inject
+    lateinit var navigationActivityViewModel: NavigationActivityViewModel
 
     lateinit var navHeaderNavigation: View
 
@@ -83,6 +87,9 @@ class NavigationActivity : GoogleApiClientBaseActivity(), /*HasFragmentInjector,
         setContentView(R.layout.activity_navigation)
         setSupportActionBar(toolbar)
 
+//        Запись в SPref статус: Вход выполнен
+        sPrefHelper.setSignInAccount(true)
+
         // load toolbar titles from string resources
         activityTitles = resources.getStringArray(R.array.nav_item_activity_titles)
 
@@ -98,6 +105,8 @@ class NavigationActivity : GoogleApiClientBaseActivity(), /*HasFragmentInjector,
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
         }
+
+        navigationActivityViewModel.loadDataFromGoogleApiToDB(mGoogleApiClient)
 
         // load nav menu header data
         loadNavHeader()
@@ -132,13 +141,15 @@ class NavigationActivity : GoogleApiClientBaseActivity(), /*HasFragmentInjector,
      */
     private fun loadNavHeader() {
 
-        val opr = Auth.GoogleSignInApi.silentSignIn(mGoogleApiClient)
-        if (opr.isDone) {
-            val result = opr.get()
-            handleSignInResult(result)
-        } else {
-            opr.setResultCallback { googleSignInResult -> handleSignInResult(googleSignInResult) }
-        }
+
+
+//        val opr = Auth.GoogleSignInApi.silentSignIn(mGoogleApiClient)
+//        if (opr.isDone) {
+//            val result = opr.get()
+//            handleSignInResult(result)
+//        } else {
+//            opr.setResultCallback { googleSignInResult -> handleSignInResult(googleSignInResult) }
+//        }
 
 //        // name, website
 //        nameUser.text = "Ravi Tamada"
@@ -171,6 +182,8 @@ class NavigationActivity : GoogleApiClientBaseActivity(), /*HasFragmentInjector,
         imgHeaderBcgr = navHeaderNavigation.findViewById(R.id.img_header_bg)
         imgProfile = navHeaderNavigation.findViewById(R.id.img_profile)
             * */
+
+
 
             nameUser.text = account!!.displayName
             emailUser.text = account.email
@@ -223,11 +236,15 @@ class NavigationActivity : GoogleApiClientBaseActivity(), /*HasFragmentInjector,
         }
     }
 
-    private fun goLogInScreen() {
-        val intent = Intent(this, AutorisationActivity::class.java)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-        startActivity(intent)
-    }
+//    private fun goLogInScreen() {
+//
+////        Запись в SPref статус: Выход из аккаунта
+//        sPrefHelper.setSignInAccount(false)
+//
+//        val intent = Intent(this, AuthorisationActivity::class.java)
+//        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+//        startActivity(intent)
+//    }
 
     /***
      * Returns respected fragment that user

@@ -1,6 +1,6 @@
 package com.example.financeapp.di.component
 
-import com.example.financeapp.BaseFragment
+import com.example.financeapp.base.BaseFragment
 import com.example.financeapp.di.modules.BaseFragmentModule
 import com.example.financeapp.di.scopes.PerActivity
 import dagger.Component

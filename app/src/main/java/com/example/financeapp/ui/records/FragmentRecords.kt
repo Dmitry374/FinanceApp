@@ -1,17 +1,13 @@
 package com.example.financeapp.ui.records
 
 import android.os.Bundle
-import android.app.Fragment
 //import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import com.example.financeapp.BaseFragment
+import com.example.financeapp.base.BaseFragment
 import com.example.financeapp.R
-import com.squareup.picasso.Picasso
-import dagger.android.AndroidInjection
-import javax.inject.Inject
 
 class FragmentRecords : BaseFragment() {
 

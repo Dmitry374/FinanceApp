@@ -1,7 +1,8 @@
-package com.example.financeapp
+package com.example.financeapp.base
 
 import android.app.Fragment
 import android.os.Bundle
+import com.example.financeapp.App
 import com.example.financeapp.di.component.BaseFragmentComponent
 import com.example.financeapp.di.component.DaggerBaseFragmentComponent
 import com.example.financeapp.di.modules.BaseFragmentModule

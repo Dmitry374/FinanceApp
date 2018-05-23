@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:padding="16dp"
     android:gravity="center"
-    tools:context="com.example.financeapp.AutorisationActivity">
+    tools:context="com.example.financeapp.ui.authorisation.AuthorisationActivity">
 
     <com.google.android.gms.common.SignInButton
         android:id="@+id/signInButtonGoogle"

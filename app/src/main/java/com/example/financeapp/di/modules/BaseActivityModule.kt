@@ -1,6 +1,6 @@
 package com.example.financeapp.di.modules
 
-import com.example.financeapp.BaseActivity
+import com.example.financeapp.base.BaseActivity
 import com.example.financeapp.di.scopes.PerActivity
 import dagger.Module
 import dagger.Provides
