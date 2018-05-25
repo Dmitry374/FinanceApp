@@ -23,4 +23,7 @@
         <item>Напоминания</item>
         <item>Курсы валют</item>
     </string-array>
+
+    <string name="try_later">Попробуйте позже !!!</string>
+    <string name="text_progress_sync">Синхронизация …</string>
 </resources>

@@ -1,8 +1,7 @@
-package com.example.financeapp
+package com.example.financeapp.common
 
 import android.content.Context
 import android.content.Intent
-import android.support.v4.content.ContextCompat.startActivity
 import com.example.financeapp.sharedpreference.SharedPreferenceHelper
 import com.example.financeapp.ui.authorisation.AuthorisationActivity
 

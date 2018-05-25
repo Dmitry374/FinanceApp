@@ -2,8 +2,7 @@ package com.example.financeapp.di.modules
 
 import android.content.ContentValues
 import android.content.Context
-import android.database.sqlite.SQLiteDatabase
-import com.example.financeapp.DBHelper
+import com.example.financeapp.db.DBHelper
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton

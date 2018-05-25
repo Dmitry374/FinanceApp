@@ -3,8 +3,8 @@ package com.example.financeapp.di.component
 import android.content.ContentValues
 import android.os.Handler
 import com.example.financeapp.App
-import com.example.financeapp.CommonMethod
-import com.example.financeapp.DBHelper
+import com.example.financeapp.common.CommonMethod
+import com.example.financeapp.db.DBHelper
 import com.example.financeapp.di.builder.ActivityBuilder
 import com.example.financeapp.di.modules.*
 import com.example.financeapp.sharedpreference.SharedPreferenceHelper

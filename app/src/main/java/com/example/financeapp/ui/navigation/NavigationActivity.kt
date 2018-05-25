@@ -3,7 +3,6 @@ package com.example.financeapp.ui.navigation
 //import android.support.v4.app.Fragment
 import android.annotation.SuppressLint
 import android.app.Fragment
-import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.design.widget.Snackbar
@@ -15,21 +14,18 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.example.financeapp.ui.authorisation.AuthorisationActivity
-import com.example.financeapp.base.GoogleApiClientBaseActivity
+import com.example.financeapp.common.Constants.Companion.EMPTY_STRING
 import com.example.financeapp.R
+import com.example.financeapp.db.User
+import com.example.financeapp.base.GoogleApiClientBaseActivity
 import com.example.financeapp.ui.custom.CircleTransform
 import com.example.financeapp.ui.main.FragmentMain
-import com.google.android.gms.auth.api.Auth
-import com.google.android.gms.auth.api.signin.GoogleSignInResult
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
 import kotlinx.android.synthetic.main.activity_navigation.*
 import kotlinx.android.synthetic.main.app_bar_navigation.*
-import javax.inject.Inject
 
 
 class NavigationActivity : GoogleApiClientBaseActivity(), /*HasFragmentInjector,*/ GoogleApiClient.OnConnectionFailedListener {
@@ -37,33 +33,20 @@ class NavigationActivity : GoogleApiClientBaseActivity(), /*HasFragmentInjector,
 //    @Inject
 //    lateinit var fragmentDispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
 
-//    @Inject
-//    lateinit var handler: Handler
+    lateinit var user: User
 
-    @Inject
-    lateinit var navigationActivityViewModel: NavigationActivityViewModel
+    private lateinit var navHeaderNavigation: View
 
-    lateinit var navHeaderNavigation: View
-
-    lateinit var nameUser: TextView
-    lateinit var emailUser: TextView
-    lateinit var imgHeaderBcgr: ImageView
-    lateinit var imgProfile: ImageView
-
-//    @Inject
-//    lateinit var mainFragment: FragmentMain
-//
-//    @Inject
-//    lateinit var recordsFragment: FragmentRecords
-
-//    @Inject
-//    lateinit var mGoogleApiClient: GoogleApiClient
+    private lateinit var nameUser: TextView
+    private lateinit var emailUser: TextView
+    private lateinit var imgHeaderBcgr: ImageView
+    private lateinit var imgProfile: ImageView
 
     private val urlNavHeaderBg = "http://api.androidhive.info/images/nav-menu-header-bg.jpg"
     private val urlProfileImg = "https://lh3.googleusercontent.com/eCtE_G34M9ygdkmOpYvCag1vBARCmZwnVS6rS5t4JLzJ6QgQSBquM0nuTsCpLhYbKljoyS-txg"
 
     // index to identify current nav menu item
-    var navItemIndex = 0
+    private var navItemIndex = 0
 
     // tags used to attach the fragments
     private val TAG_MAIN = "main"
@@ -106,8 +89,6 @@ class NavigationActivity : GoogleApiClientBaseActivity(), /*HasFragmentInjector,
                     .setAction("Action", null).show()
         }
 
-        navigationActivityViewModel.loadDataFromGoogleApiToDB(mGoogleApiClient)
-
         // load nav menu header data
         loadNavHeader()
 
@@ -123,13 +104,9 @@ class NavigationActivity : GoogleApiClientBaseActivity(), /*HasFragmentInjector,
         // Log Out
         imgProfile.setOnClickListener {
 
-            Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback { status ->
-                if (status.isSuccess) {
-                    goLogInScreen()
-                } else {
-                    Toast.makeText(this, "Log Out", Toast.LENGTH_SHORT).show()
-                }
-            }
+            navigationActivityViewModel.logOut(mGoogleApiClient)
+
+            navigationActivityViewModel.deleteUserData()
 
         }
     }
@@ -139,112 +116,44 @@ class NavigationActivity : GoogleApiClientBaseActivity(), /*HasFragmentInjector,
      * like background image, profile image
      * name, website, notifications action view (dot)
      */
+    @SuppressLint("SetTextI18n")
     private fun loadNavHeader() {
 
+        user = navigationActivityViewModel.getUserData()
 
+        nameUser.text = "${user.name} ${user.surname}"
+        emailUser.text = user.email
 
-//        val opr = Auth.GoogleSignInApi.silentSignIn(mGoogleApiClient)
-//        if (opr.isDone) {
-//            val result = opr.get()
-//            handleSignInResult(result)
-//        } else {
-//            opr.setResultCallback { googleSignInResult -> handleSignInResult(googleSignInResult) }
-//        }
-
-//        // name, website
-//        nameUser.text = "Ravi Tamada"
-//        emailUser.text = "www.androidhive.info"
-//
-//        // loading header background image
-//        Glide.with(this).load(urlNavHeaderBg)
-//                .bitmapTransform(BlurTransformation(this, 25))
-//                .crossFade()
-//                .diskCacheStrategy(DiskCacheStrategy.ALL)
-//                .into(imgHeaderBcgr)
-//
-//        // Loading profile image
-//        Glide.with(this).load(urlProfileImg)
-//                .crossFade()
-//                .thumbnail(0.5f)
-//                .bitmapTransform(CircleTransform(this))
-//                .diskCacheStrategy(DiskCacheStrategy.ALL)
-//                .into(imgProfile)
-    }
-
-    @SuppressLint("SetTextI18n")
-    private fun handleSignInResult(result: GoogleSignInResult) {
-        if (result.isSuccess) {
-            val account = result.signInAccount
-
-            /*
-            * nameUser = navHeaderNavigation.findViewById(R.id.nameUser)
-        emailUser = navHeaderNavigation.findViewById(R.id.emailUser)
-        imgHeaderBcgr = navHeaderNavigation.findViewById(R.id.img_header_bg)
-        imgProfile = navHeaderNavigation.findViewById(R.id.img_profile)
-            * */
-
-
-
-            nameUser.text = account!!.displayName
-            emailUser.text = account.email
-
-            Log.d("myLog", "getFamilyName() = " + account.familyName + " \n" +
-                    "getGivenName() = " + account.givenName)
-
-            Log.d("myLog", "account.getPhotoUrl() = " + account.photoUrl)
-
-            // loading header background image
-            Glide.with(this).load(R.drawable.nav_profile_bacground)
+        // loading header background image
+        Glide.with(this).load(R.drawable.nav_profile_bacground)
 //                        .bitmapTransform(BlurTransformation(this, 200))
+                .crossFade()
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(imgHeaderBcgr)
+
+        if (user.photoUrl == EMPTY_STRING){
+
+            // Loading profile image
+            Glide.with(this).load(R.drawable.profile_img)
                     .crossFade()
+                    .thumbnail(0.5f)
+                    .bitmapTransform(CircleTransform(this))
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .into(imgHeaderBcgr)
-
-            if (account.photoUrl == null){
-
-//                imgHeaderBcgr.setImageResource(R.drawable.side_nav_bar)
-
-//                // loading header background image
-//                Glide.with(this).load(R.drawable.side_nav_bar)
-//                        .crossFade()
-//                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-//                        .into(imgHeaderBcgr)
-
-                // Loading profile image
-                Glide.with(this).load(R.drawable.profile_img)
-                        .crossFade()
-                        .thumbnail(0.5f)
-                        .bitmapTransform(CircleTransform(this))
-                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-                        .into(imgProfile)
-
-            } else {
-
-                // Loading profile image
-                Glide.with(this).load(account.photoUrl)
-                        .crossFade()
-                        .thumbnail(0.5f)
-                        .bitmapTransform(CircleTransform(this))
-                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-                        .into(imgProfile)
-
-            }
-
+                    .into(imgProfile)
 
         } else {
-            goLogInScreen()
-        }
-    }
 
-//    private fun goLogInScreen() {
-//
-////        Запись в SPref статус: Выход из аккаунта
-//        sPrefHelper.setSignInAccount(false)
-//
-//        val intent = Intent(this, AuthorisationActivity::class.java)
-//        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-//        startActivity(intent)
-//    }
+            // Loading profile image
+            Glide.with(this).load(user.photoUrl)
+                    .crossFade()
+                    .thumbnail(0.5f)
+                    .bitmapTransform(CircleTransform(this))
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .into(imgProfile)
+
+        }
+
+    }
 
     /***
      * Returns respected fragment that user

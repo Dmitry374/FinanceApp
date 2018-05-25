@@ -5,14 +5,13 @@ import android.os.Bundle
 import android.os.Handler
 import android.support.v7.app.AppCompatActivity
 import com.example.financeapp.App
-import com.example.financeapp.CommonMethod
-import com.example.financeapp.DBHelper
+import com.example.financeapp.common.CommonMethod
+import com.example.financeapp.db.DBHelper
 import com.example.financeapp.di.component.BaseActivityComponent
 import com.example.financeapp.di.component.DaggerBaseActivityComponent
 import com.example.financeapp.di.modules.BaseActivityModule
 import com.example.financeapp.sharedpreference.SharedPreferenceHelper
 import com.example.financeapp.ui.main.FragmentMain
-import com.example.financeapp.ui.navigation.NavigationActivityViewModel
 import com.example.financeapp.ui.records.FragmentRecords
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject

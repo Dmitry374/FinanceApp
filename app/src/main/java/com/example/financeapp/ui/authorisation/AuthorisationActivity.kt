@@ -6,6 +6,7 @@ import android.widget.Toast
 import com.example.financeapp.R
 import com.example.financeapp.base.GoogleApiClientBaseActivity
 import com.example.financeapp.ui.navigation.NavigationActivity
+import com.example.financeapp.ui.sync.SyncActivity
 import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.auth.api.signin.GoogleSignInResult
 import com.google.android.gms.common.SignInButton
@@ -49,7 +50,7 @@ class AuthorisationActivity : GoogleApiClientBaseActivity() {
     }
 
     private fun goMainScreen() {
-        val intent = Intent(this, NavigationActivity::class.java)
+        val intent = Intent(this, SyncActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
         startActivity(intent)
     }
