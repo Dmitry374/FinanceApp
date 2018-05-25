@@ -4,11 +4,15 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.util.Log
 
 class DBHelper(val context: Context, private val contentValues: ContentValues)
     : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
     private lateinit var user: User
+
+    lateinit var dname: String
+    lateinit var dsurname: String
 
     companion object {
         const val DATABASE_VERSION = 1
@@ -80,9 +84,21 @@ class DBHelper(val context: Context, private val contentValues: ContentValues)
 
 //    val cursor = db.rawQuery("select * from $TABLE_USER", null)
 //    Log.d("myLogs", "Insert cursor.count = ${cursor.count}")
+//
+//    if (cursor.count > 0) {
+//        cursor.moveToFirst()
+//
+//        dname = cursor.getString(cursor.getColumnIndex(KEY_NAME))
+//        dsurname = cursor.getString(cursor.getColumnIndex(KEY_SURNAME))
+//
+//    }
+//
+//
 ////    Log.d("myLogs", "select * from $TABLE_USER")
 ////    Log.d("myLogs", "newRowId = $newRowId")
 //    cursor.close()
+
+
 //
 ////        Log.d("myLogs", "cursor.count = ${cursor.count}")
 //
@@ -124,7 +140,7 @@ class DBHelper(val context: Context, private val contentValues: ContentValues)
 
         val db: SQLiteDatabase = readableDatabase
 
-        val cursor = db.rawQuery("select * from ${TABLE_USER}", null)
+        val cursor = db.rawQuery("select * from $TABLE_USER", null)
 
 //    cursor.use { _ ->
 //        if (cursor.count > 0){
@@ -140,6 +156,8 @@ class DBHelper(val context: Context, private val contentValues: ContentValues)
 //                    cursor.getInt(cursor.getColumnIndex(KEY_SYNCHRONISE)))
 //        }
 //    }
+
+//        user = User("", "", "", "", "", "", "", 0)
 
         if (cursor.count > 0){
             cursor.moveToFirst()
@@ -176,5 +194,10 @@ class DBHelper(val context: Context, private val contentValues: ContentValues)
     fun deleteInfAbutUser(){
         val db: SQLiteDatabase = writableDatabase
         db.execSQL("delete from ${TABLE_USER}")
+    }
+
+    fun getUserCount(): Int{
+        val db: SQLiteDatabase = readableDatabase
+        return db.rawQuery("select * from $TABLE_USER", null).count
     }
 }

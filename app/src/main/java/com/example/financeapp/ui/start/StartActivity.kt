@@ -2,15 +2,20 @@ package com.example.financeapp.ui.start
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import com.example.financeapp.R
-import com.example.financeapp.base.BaseActivity
+import com.example.financeapp.base.GoogleApiClientBaseActivity
 import com.example.financeapp.ui.navigation.NavigationActivity
 
-class StartActivity : BaseActivity() {
+class StartActivity : GoogleApiClientBaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_start)
+
+        if (startActivityViewModel.getUserCountFromDB() == 0){
+            sPrefHelper.clearIsSignValue()
+        }
 
         handler.postDelayed({
 

@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.activity_authorisation.*
 //class AuthorisationActivity : BaseActivity(), GoogleApiClient.OnConnectionFailedListener, GoogleApiClient.ConnectionCallbacks {
 class AuthorisationActivity : GoogleApiClientBaseActivity() {
 
-    val SIGN_IN_CODE = 777
+    private val SIGN_IN_CODE = 777
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +25,7 @@ class AuthorisationActivity : GoogleApiClientBaseActivity() {
         signInButtonGoogle.setColorScheme(SignInButton.COLOR_DARK)
 
         signInButtonGoogle.setOnClickListener {
-            val intent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient)
+            val intent = authorisationActivityViewModule.googleApiClientRequest(mGoogleApiClient)
             startActivityForResult(intent, SIGN_IN_CODE)
         }
 
@@ -35,24 +35,8 @@ class AuthorisationActivity : GoogleApiClientBaseActivity() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == SIGN_IN_CODE) {
-            val result = Auth.GoogleSignInApi.getSignInResultFromIntent(data)
-            handleSignInResult(result)
+            authorisationActivityViewModule.getGoogleApiClientResponse(data)
         }
-    }
-
-    private fun handleSignInResult(result: GoogleSignInResult) {
-        if (result.isSuccess) {
-            goMainScreen()
-        } else {
-            Toast.makeText(this, "No account", Toast.LENGTH_SHORT).show()
-        }
-
-    }
-
-    private fun goMainScreen() {
-        val intent = Intent(this, SyncActivity::class.java)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-        startActivity(intent)
     }
 
 }

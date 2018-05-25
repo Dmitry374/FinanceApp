@@ -4,8 +4,12 @@ import android.os.Bundle
 import com.example.financeapp.App
 import com.example.financeapp.di.component.DaggerGoogleApiClientComponent
 import com.example.financeapp.di.modules.GoogleApiModule
+import com.example.financeapp.ui.authorisation.AuthorisationActivityViewModel
+import com.example.financeapp.ui.authorisation.di.AuthorisationActivityModule
 import com.example.financeapp.ui.navigation.NavigationActivityViewModel
 import com.example.financeapp.ui.navigation.di.NavigationActivityModule
+import com.example.financeapp.ui.start.StartActivityViewModel
+import com.example.financeapp.ui.start.di.StartActivityModule
 import com.example.financeapp.ui.sync.SyncActivityViewModel
 import com.example.financeapp.ui.sync.di.SyncActivityModule
 import com.google.android.gms.common.ConnectionResult
@@ -23,6 +27,12 @@ abstract class GoogleApiClientBaseActivity : BaseActivity(), GoogleApiClient.OnC
     @Inject
     lateinit var syncActivityViewModel: SyncActivityViewModel
 
+    @Inject
+    lateinit var startActivityViewModel: StartActivityViewModel
+
+    @Inject
+    lateinit var authorisationActivityViewModule: AuthorisationActivityViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -34,6 +44,7 @@ abstract class GoogleApiClientBaseActivity : BaseActivity(), GoogleApiClient.OnC
                 .googleApiModule(GoogleApiModule(this))
                 .navigationActivityModule(NavigationActivityModule(this))
                 .syncActivityModule(SyncActivityModule())
+                .authorisationActivityModule(AuthorisationActivityModule(this))
                 .build()
 
         googleApiClientComponent.inject(this)

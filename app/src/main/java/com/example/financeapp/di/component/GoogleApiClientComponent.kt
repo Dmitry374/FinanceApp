@@ -4,7 +4,9 @@ import com.example.financeapp.base.GoogleApiClientBaseActivity
 import com.example.financeapp.di.modules.BaseActivityModule
 import com.example.financeapp.di.modules.GoogleApiModule
 import com.example.financeapp.di.scopes.PerActivity
+import com.example.financeapp.ui.authorisation.di.AuthorisationActivityModule
 import com.example.financeapp.ui.navigation.di.NavigationActivityModule
+import com.example.financeapp.ui.start.di.StartActivityModule
 import com.example.financeapp.ui.sync.di.SyncActivityModule
 import dagger.Component
 
@@ -12,7 +14,9 @@ import dagger.Component
         modules = arrayOf(BaseActivityModule::class,
                 GoogleApiModule::class,
                 NavigationActivityModule::class,
-                SyncActivityModule::class))
+                SyncActivityModule::class,
+                AuthorisationActivityModule::class,
+                StartActivityModule::class))
 @PerActivity
 interface GoogleApiClientComponent {
 
