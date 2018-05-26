@@ -5,10 +5,7 @@ import android.app.Application
 import android.content.Context
 import com.example.financeapp.di.component.AppComponent
 import com.example.financeapp.di.component.DaggerAppComponent
-import com.example.financeapp.di.modules.CommonMethodModule
-import com.example.financeapp.di.modules.ContextModule
-import com.example.financeapp.di.modules.DBHelperModule
-import com.example.financeapp.di.modules.SharedPreferenceModule
+import com.example.financeapp.di.modules.*
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
@@ -37,6 +34,7 @@ class App : Application(), HasActivityInjector {
                 .dBHelperModule(DBHelperModule(mContext))
                 .sharedPreferenceModule(SharedPreferenceModule(mContext))
                 .commonMethodModule(CommonMethodModule(mContext))
+                .networkModule(NetworkModule(mContext))
                 .build()
 
         appComponent.inject(this)

@@ -23,7 +23,7 @@ class AuthorisationActivityViewModel(private val context: Context, private val c
 
     private fun handleSignInResult(result: GoogleSignInResult) {
         if (result.isSuccess) {
-            commonMethod.goMainScreen()
+            commonMethod.goSyncScreen()
         } else {
             Toast.makeText(context, context.resources.getText(R.string.try_again), Toast.LENGTH_SHORT).show()
         }

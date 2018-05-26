@@ -2,9 +2,9 @@ package com.example.financeapp.ui.navigation
 
 import android.content.Context
 import android.widget.Toast
+import com.example.financeapp.R
 import com.example.financeapp.common.CommonMethod
 import com.example.financeapp.db.DBHelper
-import com.example.financeapp.R
 import com.example.financeapp.sharedpreference.SharedPreferenceHelper
 import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.common.api.GoogleApiClient

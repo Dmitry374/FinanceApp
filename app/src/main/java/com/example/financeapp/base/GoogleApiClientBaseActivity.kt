@@ -9,7 +9,6 @@ import com.example.financeapp.ui.authorisation.di.AuthorisationActivityModule
 import com.example.financeapp.ui.navigation.NavigationActivityViewModel
 import com.example.financeapp.ui.navigation.di.NavigationActivityModule
 import com.example.financeapp.ui.start.StartActivityViewModel
-import com.example.financeapp.ui.start.di.StartActivityModule
 import com.example.financeapp.ui.sync.SyncActivityViewModel
 import com.example.financeapp.ui.sync.di.SyncActivityModule
 import com.google.android.gms.common.ConnectionResult

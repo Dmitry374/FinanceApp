@@ -2,13 +2,8 @@ package com.example.financeapp.ui.authorisation
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import com.example.financeapp.R
 import com.example.financeapp.base.GoogleApiClientBaseActivity
-import com.example.financeapp.ui.navigation.NavigationActivity
-import com.example.financeapp.ui.sync.SyncActivity
-import com.google.android.gms.auth.api.Auth
-import com.google.android.gms.auth.api.signin.GoogleSignInResult
 import com.google.android.gms.common.SignInButton
 import kotlinx.android.synthetic.main.activity_authorisation.*
 

@@ -27,5 +27,7 @@
     <string name="try_later">Попробуйте позже !!!</string>
     <string name="text_progress_sync">Синхронизация …</string>
     <string name="try_again">Попробуйте еще раз</string>
+
+    <string name="check_internet_connection">Проверьте Интернет соединение !!!</string>
 </resources>
 

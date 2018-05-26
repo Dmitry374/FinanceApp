@@ -7,6 +7,8 @@ import com.example.financeapp.common.CommonMethod
 import com.example.financeapp.db.DBHelper
 import com.example.financeapp.di.builder.ActivityBuilder
 import com.example.financeapp.di.modules.*
+import com.example.financeapp.network.Api
+import com.example.financeapp.network.NetworkHelper
 import com.example.financeapp.sharedpreference.SharedPreferenceHelper
 import com.example.financeapp.ui.main.FragmentMain
 import com.example.financeapp.ui.records.FragmentRecords
@@ -23,8 +25,8 @@ import javax.inject.Singleton
         FragmentModule::class,
         DBHelperModule::class,
         SharedPreferenceModule::class,
-        RXJavaModule::class,
         CommonMethodModule::class,
+        NetworkModule::class,
         ContextModule::class))
 @Singleton
 interface AppComponent {
@@ -37,8 +39,9 @@ interface AppComponent {
     fun getDBHelper(): DBHelper
     fun getContentValues(): ContentValues
     fun getSharedPreferenceHelper(): SharedPreferenceHelper
-    fun getCompositeDisposable(): CompositeDisposable
     fun getCommonMethodModule(): CommonMethod
+    fun getServerApi(): Api
+    fun getNetworkHelper(): NetworkHelper
 
 
     fun inject(app: App)

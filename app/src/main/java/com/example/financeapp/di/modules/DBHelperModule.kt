@@ -16,8 +16,8 @@ class DBHelperModule(private val context: Context) {
 
     @Provides
     @Singleton
-    fun provideDatabaseHelper(contentValues: ContentValues): DBHelper {
-        return DBHelper(context, contentValues)
+    fun provideDatabaseHelper(): DBHelper {
+        return DBHelper(context)
     }
 
     @Provides

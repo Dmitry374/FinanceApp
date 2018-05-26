@@ -16,10 +16,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.example.financeapp.common.Constants.Companion.EMPTY_STRING
 import com.example.financeapp.R
-import com.example.financeapp.db.User
 import com.example.financeapp.base.GoogleApiClientBaseActivity
+import com.example.financeapp.common.Constants.Companion.EMPTY_STRING
+import com.example.financeapp.network.Model
 import com.example.financeapp.ui.custom.CircleTransform
 import com.example.financeapp.ui.main.FragmentMain
 import com.google.android.gms.common.ConnectionResult
@@ -33,7 +33,7 @@ class NavigationActivity : GoogleApiClientBaseActivity(), /*HasFragmentInjector,
 //    @Inject
 //    lateinit var fragmentDispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
 
-    lateinit var user: User
+    lateinit var user: Model.User
 
     private lateinit var navHeaderNavigation: View
 
@@ -131,7 +131,7 @@ class NavigationActivity : GoogleApiClientBaseActivity(), /*HasFragmentInjector,
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(imgHeaderBcgr)
 
-        if (user.photoUrl == EMPTY_STRING){
+        if (user.photourl == EMPTY_STRING){
 
             // Loading profile image
             Glide.with(this).load(R.drawable.profile_img)
@@ -144,7 +144,7 @@ class NavigationActivity : GoogleApiClientBaseActivity(), /*HasFragmentInjector,
         } else {
 
             // Loading profile image
-            Glide.with(this).load(user.photoUrl)
+            Glide.with(this).load(user.photourl)
                     .crossFade()
                     .thumbnail(0.5f)
                     .bitmapTransform(CircleTransform(this))

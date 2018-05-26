@@ -3,6 +3,7 @@ package com.example.financeapp.ui.sync.di
 import com.example.financeapp.common.CommonMethod
 import com.example.financeapp.db.DBHelper
 import com.example.financeapp.di.scopes.PerActivity
+import com.example.financeapp.network.Api
 import com.example.financeapp.sharedpreference.SharedPreferenceHelper
 import com.example.financeapp.ui.sync.SyncActivityViewModel
 import dagger.Module
@@ -12,7 +13,8 @@ import dagger.Provides
 class SyncActivityModule {
     @PerActivity
     @Provides
-    fun provideViewModel(dbHelper: DBHelper, commonMethod: CommonMethod, sharedPreferenceHelper: SharedPreferenceHelper): SyncActivityViewModel {
-        return SyncActivityViewModel(dbHelper, commonMethod, sharedPreferenceHelper)
+    fun provideViewModel(dbHelper: DBHelper, api: Api,
+                         commonMethod: CommonMethod, sharedPreferenceHelper: SharedPreferenceHelper): SyncActivityViewModel {
+        return SyncActivityViewModel(dbHelper, api, commonMethod, sharedPreferenceHelper)
     }
 }

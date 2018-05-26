@@ -5,14 +5,12 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
+import com.example.financeapp.network.Model
 
-class DBHelper(val context: Context, private val contentValues: ContentValues)
+class DBHelper(val context: Context)
     : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
-    private lateinit var user: User
-
-    lateinit var dname: String
-    lateinit var dsurname: String
+    private lateinit var user: Model.User
 
     companion object {
         const val DATABASE_VERSION = 1
@@ -80,7 +78,8 @@ class DBHelper(val context: Context, private val contentValues: ContentValues)
 
         // Insert the new row, returning the primary key value of the new row
         //    val newRowId = db.insert(TABLE_USER, null, values)
-       db.insert(TABLE_USER, null, values)
+//        db.insert(TABLE_USER, null, values)
+        db.insertWithOnConflict(TABLE_USER,null, values, SQLiteDatabase.CONFLICT_REPLACE);
 
 //    val cursor = db.rawQuery("select * from $TABLE_USER", null)
 //    Log.d("myLogs", "Insert cursor.count = ${cursor.count}")
@@ -136,11 +135,13 @@ class DBHelper(val context: Context, private val contentValues: ContentValues)
     }
 
 //    Извлечение данных из таблицы User
-    fun getInfAboutUser() : User {
+    fun getInfAboutUser() : Model.User {
 
         val db: SQLiteDatabase = readableDatabase
 
         val cursor = db.rawQuery("select * from $TABLE_USER", null)
+
+        Log.d("myLogs", "getInfAboutUser cursor.count = ${cursor.count}")
 
 //    cursor.use { _ ->
 //        if (cursor.count > 0){
@@ -159,10 +160,16 @@ class DBHelper(val context: Context, private val contentValues: ContentValues)
 
 //        user = User("", "", "", "", "", "", "", 0)
 
+//    try {
+//
+//    } catch (e: kotlin.UninitializedPropertyAccessException){
+//
+//    }
+
         if (cursor.count > 0){
             cursor.moveToFirst()
 
-            user = User(cursor.getString(cursor.getColumnIndex(KEY_NAME)),
+            user = Model.User(cursor.getString(cursor.getColumnIndex(KEY_NAME)),
                     cursor.getString(cursor.getColumnIndex(KEY_SURNAME)),
                     cursor.getString(cursor.getColumnIndex(KEY_EMAIL)),
                     cursor.getString(cursor.getColumnIndex(KEY_PHOTO_URL)),
@@ -193,7 +200,8 @@ class DBHelper(val context: Context, private val contentValues: ContentValues)
 
     fun deleteInfAbutUser(){
         val db: SQLiteDatabase = writableDatabase
-        db.execSQL("delete from ${TABLE_USER}")
+        db.delete(TABLE_USER, null, null);
+//        db.execSQL("delete from ${TABLE_USER}")
     }
 
     fun getUserCount(): Int{

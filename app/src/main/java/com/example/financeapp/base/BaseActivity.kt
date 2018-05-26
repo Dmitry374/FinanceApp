@@ -10,10 +10,13 @@ import com.example.financeapp.db.DBHelper
 import com.example.financeapp.di.component.BaseActivityComponent
 import com.example.financeapp.di.component.DaggerBaseActivityComponent
 import com.example.financeapp.di.modules.BaseActivityModule
+import com.example.financeapp.network.Api
+import com.example.financeapp.network.NetworkHelper
 import com.example.financeapp.sharedpreference.SharedPreferenceHelper
 import com.example.financeapp.ui.main.FragmentMain
 import com.example.financeapp.ui.records.FragmentRecords
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.Disposable
 import javax.inject.Inject
 
 abstract class BaseActivity : AppCompatActivity() {
@@ -36,11 +39,17 @@ abstract class BaseActivity : AppCompatActivity() {
     @Inject
     lateinit var sPrefHelper: SharedPreferenceHelper
 
-    @Inject
-    lateinit var compositeDisposable: CompositeDisposable
+//    @Inject
+//    lateinit var compositeDisposable: CompositeDisposable
 
     @Inject
     lateinit var commonMethod: CommonMethod
+
+    @Inject
+    lateinit var api: Api
+
+    @Inject
+    lateinit var networkHelper: NetworkHelper
 
     private val baseActivityComponent: BaseActivityComponent by lazy {
         DaggerBaseActivityComponent
@@ -65,4 +74,12 @@ abstract class BaseActivity : AppCompatActivity() {
 
     protected val baseActivityModule: BaseActivityModule
         get() = BaseActivityModule(this)
+
+
+//    override fun onDestroy() {
+//        super.onDestroy()
+//        compositeDisposable.clear()
+//        compositeDisposable.dispose()
+//
+//    }
 }

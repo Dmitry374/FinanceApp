@@ -13,7 +13,8 @@ import dagger.Provides
 class NavigationActivityModule(private val context: Context) {
     @PerActivity
     @Provides
-    fun provideViewModel(dbHelper: DBHelper, commonMethod: CommonMethod, sharedPreferenceHelper: SharedPreferenceHelper): NavigationActivityViewModel {
+    fun provideViewModel(dbHelper: DBHelper, commonMethod: CommonMethod,
+                         sharedPreferenceHelper: SharedPreferenceHelper): NavigationActivityViewModel {
         return NavigationActivityViewModel(context, dbHelper, commonMethod, sharedPreferenceHelper)
     }
 }
