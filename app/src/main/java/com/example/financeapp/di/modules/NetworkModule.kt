@@ -1,6 +1,7 @@
 package com.example.financeapp.di.modules
 
 import android.content.Context
+import com.example.financeapp.common.CommonMethod
 import com.example.financeapp.common.Constants.Companion.BASE_URL
 import com.example.financeapp.db.DBHelper
 import com.example.financeapp.network.Api
@@ -17,12 +18,12 @@ import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 @Module(includes = arrayOf(ContextModule::class))
-class NetworkModule(private val context: Context) {
+class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideNetworkHelper(api: Api, dbHelper: DBHelper) =
-            NetworkHelper(context, api, dbHelper)
+    fun provideNetworkHelper(commonMethod: CommonMethod, api: Api, dbHelper: DBHelper) =
+            NetworkHelper(commonMethod, api, dbHelper)
 
     @Provides
     @Singleton

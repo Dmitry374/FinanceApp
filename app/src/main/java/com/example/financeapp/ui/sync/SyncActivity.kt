@@ -1,7 +1,6 @@
 package com.example.financeapp.ui.sync
 
 import android.os.Bundle
-import android.util.Log
 import com.example.financeapp.R
 import com.example.financeapp.base.GoogleApiClientBaseActivity
 import com.google.android.gms.common.api.GoogleApiClient
@@ -52,6 +51,6 @@ class SyncActivity : GoogleApiClientBaseActivity(), GoogleApiClient.OnConnection
 //    Закрытие CompositeDisposable
     override fun onDestroy() {
         super.onDestroy()
-        syncActivityViewModel.closeCompositeDisposable()
+        syncActivityViewModel.closeDisposable()
     }
 }

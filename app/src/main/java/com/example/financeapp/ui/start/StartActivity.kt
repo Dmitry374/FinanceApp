@@ -2,7 +2,6 @@ package com.example.financeapp.ui.start
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import com.example.financeapp.R
 import com.example.financeapp.base.GoogleApiClientBaseActivity
 import com.example.financeapp.ui.navigation.NavigationActivity
