@@ -5,6 +5,8 @@ import android.content.Intent
 import android.widget.Toast
 import com.example.financeapp.R
 import com.example.financeapp.common.CommonMethod
+import com.example.financeapp.common.Constants.Companion.EMPTY_STRING
+import com.example.financeapp.common.Constants.Companion.REGISTER_GOOGLE
 import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.auth.api.signin.GoogleSignInResult
 import com.google.android.gms.common.api.GoogleApiClient
@@ -23,7 +25,7 @@ class AuthorisationActivityViewModel(private val context: Context, private val c
 
     private fun handleSignInResult(result: GoogleSignInResult) {
         if (result.isSuccess) {
-            commonMethod.goSyncScreen()
+            commonMethod.goSyncScreen(REGISTER_GOOGLE, EMPTY_STRING, EMPTY_STRING)
         } else {
             Toast.makeText(context, context.resources.getText(R.string.try_again), Toast.LENGTH_SHORT).show()
         }

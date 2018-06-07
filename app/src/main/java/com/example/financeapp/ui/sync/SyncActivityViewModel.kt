@@ -51,13 +51,18 @@ class SyncActivityViewModel(private val networkHelper: NetworkHelper, private va
                 account.photoUrl.toString()
             }
 
-//            Рекурсивный метод записи данных на сервер (т.к. данные не записываютс с первого раза)
-            networkHelper.loadUserDataOnServer(name, surname, account.email!!,
+            loadUserDataOnServer(name, surname, account.email!!,
                     photoUrl, EMPTY_STRING, EMPTY_STRING, EMPTY_STRING)
 
         } else {
             commonMethod.goLogInScreen(sharedPreferenceHelper)
         }
+    }
+
+    fun loadUserDataOnServer(name: String, surname: String, email: String, photoUrl: String,
+                             password: String, gender: String, dateOfBirth: String){
+//        Рекурсивный метод записи данных на сервер (т.к. данные не записываютс с первого раза)
+        networkHelper.loadUserDataOnServer(name, surname, email, photoUrl, password, gender, dateOfBirth)
     }
 
     fun closeDisposable() = networkHelper.closeDisposable()

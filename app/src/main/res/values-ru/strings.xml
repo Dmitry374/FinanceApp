@@ -29,4 +29,13 @@
     <string name="try_again">Попробуйте еще раз</string>
 
     <string name="check_internet_connection">Проверьте Интернет соединение !!!</string>
+    <string name="title_activity_add_new_bill">Новый счет</string>
+
+    <!-- Add Bill-->
+    <string name="add_name_bill">Название счета</string>
+    <string name="add_initial_value">Начальное значение</string>
+    <string name="add_color">Цвет</string>
+
+    <string name="create_new_bill">Создать новый счет</string>
+
 </resources>

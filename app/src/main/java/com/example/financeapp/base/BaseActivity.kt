@@ -15,6 +15,9 @@ import com.example.financeapp.network.NetworkHelper
 import com.example.financeapp.sharedpreference.SharedPreferenceHelper
 import com.example.financeapp.ui.main.FragmentMain
 import com.example.financeapp.ui.records.FragmentRecords
+import com.example.financeapp.ui.registration.FragmentRegistration
+import com.example.financeapp.ui.registration.FragmentSignIn
+import com.squareup.picasso.Picasso
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import javax.inject.Inject
@@ -31,6 +34,12 @@ abstract class BaseActivity : AppCompatActivity() {
     lateinit var recordsFragment: FragmentRecords
 
     @Inject
+    lateinit var registrationFragment: FragmentRegistration
+
+    @Inject
+    lateinit var signInFragment: FragmentSignIn
+
+    @Inject
     lateinit var dbHelper: DBHelper
 
     @Inject
@@ -45,11 +54,14 @@ abstract class BaseActivity : AppCompatActivity() {
     @Inject
     lateinit var commonMethod: CommonMethod
 
-    @Inject
-    lateinit var api: Api
+//    @Inject
+//    lateinit var api: Api
 
     @Inject
     lateinit var networkHelper: NetworkHelper
+
+    @Inject
+    lateinit var picasso: Picasso
 
     private val baseActivityComponent: BaseActivityComponent by lazy {
         DaggerBaseActivityComponent

@@ -28,5 +28,7 @@ class NavigationActivityViewModel(private val context: Context,
     fun getUserData() = dbHelper.getInfAboutUser()
 
 //    Delete User Data
-    fun deleteUserData() = dbHelper.deleteInfAbutUser()
+    fun deleteAllData() {
+        dbHelper.deleteAllData()
+    }
 }

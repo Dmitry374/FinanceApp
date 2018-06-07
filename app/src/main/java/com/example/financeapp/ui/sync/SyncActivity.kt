@@ -3,6 +3,11 @@ package com.example.financeapp.ui.sync
 import android.os.Bundle
 import com.example.financeapp.R
 import com.example.financeapp.base.GoogleApiClientBaseActivity
+import com.example.financeapp.common.Constants.Companion.EMPTY_STRING
+import com.example.financeapp.common.Constants.Companion.REGISTER_EMAIL
+import com.example.financeapp.common.Constants.Companion.REGISTER_GOOGLE
+import com.example.financeapp.common.Constants.Companion.REGISTER_PASSWORD
+import com.example.financeapp.common.Constants.Companion.TYPE_AUTHORISATION
 import com.google.android.gms.common.api.GoogleApiClient
 
 class SyncActivity : GoogleApiClientBaseActivity(), GoogleApiClient.OnConnectionFailedListener {
@@ -11,7 +16,13 @@ class SyncActivity : GoogleApiClientBaseActivity(), GoogleApiClient.OnConnection
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sync)
 
-        syncActivityViewModel.loadDataFromGoogleApiToDB(mGoogleApiClient)
+        if (intent.getStringExtra(TYPE_AUTHORISATION) == REGISTER_GOOGLE){   //  Google
+            syncActivityViewModel.loadDataFromGoogleApiToDB(mGoogleApiClient)
+        } else {                                                            // Own
+            syncActivityViewModel.loadUserDataOnServer(intent.getStringExtra(REGISTER_EMAIL),
+                    EMPTY_STRING, intent.getStringExtra(REGISTER_EMAIL),
+                    EMPTY_STRING, intent.getStringExtra(REGISTER_PASSWORD), EMPTY_STRING, EMPTY_STRING)
+        }
 
         /* ----------------------------------------------------------------------------- */
 //        disposable = api.registerUser("Dima", "Tr", "dima@yandex.ru", "url",
@@ -48,7 +59,7 @@ class SyncActivity : GoogleApiClientBaseActivity(), GoogleApiClient.OnConnection
         finish()
     }
 
-//    Закрытие CompositeDisposable
+//    Закрытие Disposable
     override fun onDestroy() {
         super.onDestroy()
         syncActivityViewModel.closeDisposable()

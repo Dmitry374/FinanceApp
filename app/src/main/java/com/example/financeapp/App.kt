@@ -34,6 +34,7 @@ class App : Application(), HasActivityInjector {
                 .dBHelperModule(DBHelperModule(mContext))
                 .sharedPreferenceModule(SharedPreferenceModule(mContext))
                 .commonMethodModule(CommonMethodModule(mContext))
+                .networkModule(NetworkModule(mContext))
                 .build()
 
         appComponent.inject(this)

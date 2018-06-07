@@ -2,6 +2,7 @@ package com.example.financeapp.sharedpreference
 
 import android.content.SharedPreferences
 import com.example.financeapp.sharedpreference.SharedPreferenceConstants.Companion.IS_SIGN
+import com.example.financeapp.sharedpreference.SharedPreferenceConstants.Companion.REMIND_BILL_POSITION
 import com.example.financeapp.sharedpreference.SharedPreferenceConstants.Companion.USER_EMAIL
 import com.example.financeapp.sharedpreference.SharedPreferenceConstants.Companion.USER_NAME
 import com.example.financeapp.sharedpreference.SharedPreferenceConstants.Companion.USER_PHOTO_URL
@@ -16,6 +17,9 @@ class SharedPreferenceHelper(private val mSharedPreferences: SharedPreferences) 
     fun clearIsSignValue() = mSharedPreferences.edit().putBoolean(IS_SIGN, false).apply()
     fun setSignInAccount(isSign: Boolean) = mSharedPreferences.edit().putBoolean(IS_SIGN, isSign).apply()
     fun getSignInAccount(): Boolean = mSharedPreferences.getBoolean(IS_SIGN, false)
+
+    fun setRemindSelectedBill(billPosition: Int) = mSharedPreferences.edit().putInt(REMIND_BILL_POSITION, billPosition).apply()
+    fun getRemindSelectedBill(): Int = mSharedPreferences.getInt(REMIND_BILL_POSITION, 0)
 
     fun setUserName(name: String) = mSharedPreferences.edit().putString(USER_NAME, name).apply()
     fun getUserName(): String = mSharedPreferences.getString(USER_NAME, "")

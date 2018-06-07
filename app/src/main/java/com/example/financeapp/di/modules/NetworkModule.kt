@@ -1,5 +1,6 @@
 package com.example.financeapp.di.modules
 
+import android.app.ProgressDialog
 import android.content.Context
 import com.example.financeapp.common.CommonMethod
 import com.example.financeapp.common.Constants.Companion.BASE_URL
@@ -18,12 +19,12 @@ import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 @Module(includes = arrayOf(ContextModule::class))
-class NetworkModule {
+class NetworkModule(private val context: Context) {
 
     @Provides
     @Singleton
     fun provideNetworkHelper(commonMethod: CommonMethod, api: Api, dbHelper: DBHelper) =
-            NetworkHelper(commonMethod, api, dbHelper)
+            NetworkHelper(context, commonMethod, api, dbHelper)
 
     @Provides
     @Singleton

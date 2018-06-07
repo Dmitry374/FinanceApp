@@ -84,10 +84,10 @@ class NavigationActivity : GoogleApiClientBaseActivity(), /*HasFragmentInjector,
         imgHeaderBcgr = navHeaderNavigation.findViewById(R.id.img_header_bg)
         imgProfile = navHeaderNavigation.findViewById(R.id.img_profile)
 
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
-        }
+//        fab.setOnClickListener { view ->
+//            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                    .setAction("Action", null).show()
+//        }
 
         // load nav menu header data
         loadNavHeader()
@@ -106,7 +106,7 @@ class NavigationActivity : GoogleApiClientBaseActivity(), /*HasFragmentInjector,
 
             navigationActivityViewModel.logOut(mGoogleApiClient)
 
-            navigationActivityViewModel.deleteUserData()
+            navigationActivityViewModel.deleteAllData()
 
         }
     }
@@ -360,9 +360,9 @@ class NavigationActivity : GoogleApiClientBaseActivity(), /*HasFragmentInjector,
 
     // show or hide the fab
     private fun toggleFab() {
-        if (navItemIndex == 0)
-            fab.show()
-        else
+//        if (navItemIndex == 0)
+//            fab.show()
+//        else
             fab.hide()
     }
 

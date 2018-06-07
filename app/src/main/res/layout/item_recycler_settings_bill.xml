@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_view_item_recycler_view_link"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="8dp"
+    android:background="#FFFFFF"
+    android:foreground="?attr/selectableItemBackground"
+    app:cardCornerRadius="5dp"
+    card_view:cardElevation="2">
+
+    <RelativeLayout
+        android:id="@+id/linLayoutRecycle"
+        android:layout_width="match_parent"
+        android:padding="10dp"
+        android:layout_height="90dp">
+
+        <RelativeLayout
+            android:id="@+id/relMarkerBill"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/round_mark" />
+
+        <TextView
+            android:id="@+id/tvNameBillSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="25dp"
+            android:layout_marginStart="25dp"
+            android:layout_toEndOf="@+id/relMarkerBill"
+            android:layout_toRightOf="@+id/relMarkerBill"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="Caption"
+            android:textAllCaps="false"
+            android:textColor="#121212"
+            android:textSize="18sp" />
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="0.2"-->
+            <!--android:gravity="center"-->
+            <!--android:orientation="horizontal"-->
+            <!--android:layout_marginLeft="7dp"-->
+            <!--android:layout_marginStart="7dp"-->
+            <!--android:layout_gravity="center">-->
+
+            <!--&lt;!&ndash;<ImageView&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_gravity="center"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:id="@+id/imgMarkerBill"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:background="@drawable/round_mark"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:backgroundTint="@color/colorAccent"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:transitionName="shareView"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_alignParentTop="true"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:adjustViewBounds="true"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:scaleType="centerCrop" />&ndash;&gt;-->
+
+            <!--<RelativeLayout-->
+                <!--android:id="@+id/relMarkerBill"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="@drawable/round_mark"-->
+                <!--android:backgroundTint="@color/colorAccent"-->
+                <!--android:transitionName="shareView" />-->
+
+        <!--</LinearLayout>-->
+
+        <!--<LinearLayout-->
+            <!--android:layout_weight="0.8"-->
+            <!--android:layout_marginLeft="10dp"-->
+            <!--android:layout_marginStart="10dp"-->
+            <!--android:paddingLeft="2dp"-->
+            <!--android:paddingStart="2dp"-->
+            <!--android:paddingRight="3dp"-->
+            <!--android:paddingEnd="3dp"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:gravity="center_vertical"-->
+            <!--android:orientation="vertical">-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/tvNameBillSettings"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:ellipsize="end"-->
+                <!--android:maxLines="2"-->
+                <!--android:text="Caption"-->
+                <!--android:textAllCaps="false"-->
+                <!--android:textColor="#121212"-->
+                <!--android:textSize="18sp" />-->
+        <!--</LinearLayout>-->
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

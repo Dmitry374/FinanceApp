@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import com.example.financeapp.R
 import com.example.financeapp.base.GoogleApiClientBaseActivity
+import com.example.financeapp.ui.registration.RegAuthActivity
 import com.google.android.gms.common.SignInButton
 import kotlinx.android.synthetic.main.activity_authorisation.*
 
@@ -22,6 +23,20 @@ class AuthorisationActivity : GoogleApiClientBaseActivity() {
         signInButtonGoogle.setOnClickListener {
             val intent = authorisationActivityViewModule.googleApiClientRequest(mGoogleApiClient)
             startActivityForResult(intent, SIGN_IN_CODE)
+        }
+
+        btnRegisterAccount.setOnClickListener {
+            val intent = Intent(this, RegAuthActivity::class.java)
+            intent.putExtra("typeAction", "registration")
+            startActivity(intent)
+            finish()
+        }
+
+        btnSignInAccount.setOnClickListener {
+            val intent = Intent(this, RegAuthActivity::class.java)
+            intent.putExtra("typeAction", "signIn")
+            startActivity(intent)
+            finish()
         }
 
     }

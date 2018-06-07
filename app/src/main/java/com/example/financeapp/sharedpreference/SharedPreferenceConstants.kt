@@ -7,6 +7,7 @@ package com.example.financeapp.sharedpreference
 class SharedPreferenceConstants {
     companion object {
         const val IS_SIGN = "is_sign"
+        const val REMIND_BILL_POSITION = "remind_selected_bill_position"
 
         const val USER_EMAIL = "user_email"
         const val USER_NAME = "user_name"

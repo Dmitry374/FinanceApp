@@ -12,10 +12,11 @@ import com.example.financeapp.network.NetworkHelper
 import com.example.financeapp.sharedpreference.SharedPreferenceHelper
 import com.example.financeapp.ui.main.FragmentMain
 import com.example.financeapp.ui.records.FragmentRecords
+import com.example.financeapp.ui.registration.FragmentRegistration
+import com.example.financeapp.ui.registration.FragmentSignIn
 import com.squareup.picasso.Picasso
 import dagger.Component
 import dagger.android.AndroidInjectionModule
-import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Singleton
 
 @Component(modules = arrayOf(AndroidInjectionModule::class,
@@ -42,6 +43,8 @@ interface AppComponent {
     fun getCommonMethodModule(): CommonMethod
     fun getServerApi(): Api
     fun getNetworkHelper(): NetworkHelper
+    fun getFragmentRegistration(): FragmentRegistration
+    fun getFragmentSignIn(): FragmentSignIn
 
 
     fun inject(app: App)

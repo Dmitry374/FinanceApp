@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import com.example.financeapp.base.BaseFragment
 import com.example.financeapp.R
+import com.example.financeapp.ui.main.FragmentMain
 
 class FragmentRecords : BaseFragment() {
 
@@ -30,6 +31,12 @@ class FragmentRecords : BaseFragment() {
         picasso
                 .load(R.mipmap.ic_launcher)
                 .into(imgTest)
+
+//        imgTest.setOnClickListener {
+//            val ft = fragmentManager.beginTransaction()
+//            ft.replace(R.id.frame, FragmentMain())
+//            ft.commit()
+//        }
 
         // Inflate the layout for this fragment
         return view
