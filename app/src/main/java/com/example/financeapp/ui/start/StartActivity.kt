@@ -21,9 +21,6 @@ class StartActivity : GoogleApiClientBaseActivity() {
         handler.postDelayed({
 
 //            Если вход выполнен, переходим сразу в приложение
-            val b = sPrefHelper.getSignInAccount()
-            Toast.makeText(this, "b = $b", Toast.LENGTH_SHORT).show()
-            Log.d("myLogs", "StartActivity b = $b")
             if (sPrefHelper.getSignInAccount()){
                 goNavigationScreen()
             } else {

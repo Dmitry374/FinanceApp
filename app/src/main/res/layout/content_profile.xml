@@ -173,6 +173,7 @@
                 android:layout_marginTop="7dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:errorTextAppearance="@style/MyAppTheme.TextInputLayout"
                 app:errorEnabled="true">
 
                 <EditText
@@ -189,6 +190,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:errorTextAppearance="@style/MyAppTheme.TextInputLayout"
                 app:errorEnabled="true">
 
                 <EditText

@@ -13,14 +13,14 @@
     <string name="nav_records">Записи</string>
     <string name="nav_credit_calculator">Кредитный калькулятор</string>
     <string name="nav_reminders">Напоминания</string>
-    <string name="nav_exchange_rates">Курсы валют</string>
+    <string name="nav_exchange_rates">Курсы валют ЦБ</string>
 
     <!-- Toolbar titles when navigation menu item is selected -->
     <string-array name="nav_item_activity_titles">
         <item>Главная</item>
         <item>Записи</item>
         <item>Кредитный калькулятор</item>
-        <item>Курсы валют</item>
+        <item>Курсы валют ЦБ</item>
     </string-array>
 
     <!--<string-array name="nav_item_activity_titles">-->

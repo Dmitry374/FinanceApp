@@ -222,11 +222,11 @@ class NavigationActivity : GoogleApiClientBaseActivity(), /*HasFragmentInjector,
                 // records
                 return recordsFragment
             }
+//            2 -> {
+////                credit calculator
+//                return fragmentCreditCalculator
+//            }
             2 -> {
-//                credit calculator
-                return fragmentCreditCalculator
-            }
-            3 -> {
 //                exchange rates
                 return fragmentExchangeRates
             }
@@ -267,18 +267,18 @@ class NavigationActivity : GoogleApiClientBaseActivity(), /*HasFragmentInjector,
                     CURRENT_TAG = TAG_RECORDS
                     spinnerRecordsBills.visibility = View.VISIBLE
                 }
-                R.id.nav_credit_calculator -> {
-                    navItemIndex = 2
-                    CURRENT_TAG = TAG_CREDIT_CALCULATOR
-                    spinnerRecordsBills.visibility = View.GONE
-                }
+//                R.id.nav_credit_calculator -> {
+//                    navItemIndex = 2
+//                    CURRENT_TAG = TAG_CREDIT_CALCULATOR
+//                    spinnerRecordsBills.visibility = View.GONE
+//                }
 //                R.id.nav_reminders -> {
 //                    navItemIndex = 3
 //                    CURRENT_TAG = TAG_REMINDERS
 //                    spinnerRecordsBills.visibility = View.INVISIBLE
 //                }
                 R.id.nav_exchange_rates -> {
-                    navItemIndex = 3
+                    navItemIndex = 2
                     CURRENT_TAG = TAG_EXCHANGE_RATES
                     spinnerRecordsBills.visibility = View.GONE
                 }

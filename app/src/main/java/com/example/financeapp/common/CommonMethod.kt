@@ -23,6 +23,8 @@ class CommonMethod(private val context: Context) {
     fun goLogInScreen(sPrefHelper: SharedPreferenceHelper) {
 //        Запись в SPref статус: Выход из аккаунта
         sPrefHelper.setSignInAccount(false)
+        sPrefHelper.clearAllPrefs(context)
+//    sPrefHelper.setUserEmail(EMPTY_STRING)
 
         val intent = Intent(context, AuthorisationActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)

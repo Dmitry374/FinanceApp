@@ -60,6 +60,11 @@ class ProfileActivity : GoogleApiClientBaseActivity() {
             btnSetDateOfBirthProfile.text = user.datebirth
         }
 
+        imgUserProfile.setOnClickListener {
+            sPrefHelper.getUserEmail()
+            Toast.makeText(this, sPrefHelper.getUserEmail(), Toast.LENGTH_SHORT).show()
+        }
+
         if (user.photourl == EMPTY_STRING){
 
             // Loading profile image

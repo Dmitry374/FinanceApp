@@ -50,6 +50,8 @@ class NetworkHelper(private val context: Context,
                                 val count = dbHelper.getUserCount()
                                 if (dbHelper.getUserCount() == 0){
                                     loadUserDataOnServer(name, surname, email, photoUrl, password, gender, dateOfBirth)
+                                } else {
+                                    getBillTable()
                                 }
 
                             }
@@ -227,10 +229,14 @@ class NetworkHelper(private val context: Context,
                             @Throws(Exception::class)
                             override fun accept(listBill: List<Model.Bill>) {
 
+                                Log.d("myLog", "getBillTable getUserEmail = ${sharedPreferenceHelper.getUserEmail()}")
+
                                 // Заполнение таблицы счетов с сервера
                                 for (item in listBill){
                                     dbHelper.addNewBill(item.name, item.amount, item.currency, item.color, item.color_position, 1, 1)
                                 }
+
+                                getRecordsTable()
 
                             }
                         },
@@ -258,6 +264,8 @@ class NetworkHelper(private val context: Context,
                             @SuppressLint("SetTextI18n")
                             @Throws(Exception::class)
                             override fun accept(listRecords: List<Model.Record>) {
+
+                                Log.d("myLog", "getRecordsTable getUserEmail = ${sharedPreferenceHelper.getUserEmail()}")
 
                                 // Заполнение таблицы счетов с сервера
                                 for (item in listRecords){
