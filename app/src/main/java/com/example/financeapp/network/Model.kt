@@ -6,14 +6,17 @@ object Model {
                     var password: String, var gender: String, var datebirth: String, var synchronise: Int)
 
     data class Bill(var name: String, var amount: String, var currency: String, var color: Int,
-                    var colorPosition: Int, var synchronise: Int)
+                    var color_position: Int, val deleted: Int, var synchronise: Int)
 
     data class Category(val name: String, val icon: Int)
 
-    data class Record(val name: String, val sumOp: String, val type: String, val bill: String, val color: Int, val icon: Int, val date: String)
+    data class Record(val id: Int, val name: String, val sum: String, val bill: String, val type: String,
+                      val color: Int, val icon: Int, val date: String, val deleted: Int, var synchronise: Int)
 
     data class Currency(val Date: String, val PreviousDate: String, val PreviousURL: String, val Timestamp: String,
                         var Valute: Valute)
+
+    data class Valuta(val ID: String, val NumCode: String, val CharCode: String, val Nominal: String, val Name: String, val Value: String, val Previous: String)
 
     data class Valute(val AUD: AUD,
                       val AZN: AZN,

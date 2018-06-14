@@ -10,6 +10,8 @@ import com.example.financeapp.di.modules.*
 import com.example.financeapp.network.Api
 import com.example.financeapp.network.NetworkHelper
 import com.example.financeapp.sharedpreference.SharedPreferenceHelper
+import com.example.financeapp.ui.creditcalculator.FragmentCreditCalculator
+import com.example.financeapp.ui.exchangerates.FragmentExchangeRates
 import com.example.financeapp.ui.main.FragmentMain
 import com.example.financeapp.ui.records.FragmentRecords
 import com.example.financeapp.ui.registration.FragmentRegistration
@@ -37,6 +39,8 @@ interface AppComponent {
     fun getHandler(): Handler
     fun getMainFragment(): FragmentMain
     fun getRecordsFragment(): FragmentRecords
+    fun getFragmentCreditCalculator(): FragmentCreditCalculator
+    fun getFragmentExchangeRates(): FragmentExchangeRates
     fun getDBHelper(): DBHelper
     fun getContentValues(): ContentValues
     fun getSharedPreferenceHelper(): SharedPreferenceHelper

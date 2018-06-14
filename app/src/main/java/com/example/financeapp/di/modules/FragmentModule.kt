@@ -1,5 +1,7 @@
 package com.example.financeapp.di.modules
 
+import com.example.financeapp.ui.creditcalculator.FragmentCreditCalculator
+import com.example.financeapp.ui.exchangerates.FragmentExchangeRates
 import com.example.financeapp.ui.main.FragmentMain
 import com.example.financeapp.ui.records.FragmentRecords
 import com.example.financeapp.ui.registration.FragmentRegistration
@@ -17,6 +19,14 @@ class FragmentModule {
     @Provides
     @Singleton
     fun providesRecordsFragment() = FragmentRecords()
+
+    @Provides
+    @Singleton
+    fun providesFragmentCreditCalculator() = FragmentCreditCalculator()
+
+    @Provides
+    @Singleton
+    fun providesFragmentExchangeRates() = FragmentExchangeRates()
 
 
     @Provides

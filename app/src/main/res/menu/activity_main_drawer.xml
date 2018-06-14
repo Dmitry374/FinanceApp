@@ -16,10 +16,10 @@
             android:id="@+id/nav_credit_calculator"
             android:icon="@drawable/ic_menu_gallery"
             android:title="@string/nav_credit_calculator" />
-        <item
-            android:id="@+id/nav_reminders"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/nav_reminders" />
+        <!--<item-->
+            <!--android:id="@+id/nav_reminders"-->
+            <!--android:icon="@drawable/ic_menu_gallery"-->
+            <!--android:title="@string/nav_reminders" />-->
         <item
             android:id="@+id/nav_exchange_rates"
             android:icon="@drawable/ic_menu_gallery"

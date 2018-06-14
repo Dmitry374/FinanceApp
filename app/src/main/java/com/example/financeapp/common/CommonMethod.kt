@@ -9,6 +9,7 @@ import com.example.financeapp.common.Constants.Companion.REGISTER_PASSWORD
 import com.example.financeapp.common.Constants.Companion.TYPE_AUTHORISATION
 import com.example.financeapp.sharedpreference.SharedPreferenceHelper
 import com.example.financeapp.ui.authorisation.AuthorisationActivity
+import com.example.financeapp.ui.main.SettingsBillActivity
 import com.example.financeapp.ui.navigation.NavigationActivity
 import com.example.financeapp.ui.sync.SyncActivity
 

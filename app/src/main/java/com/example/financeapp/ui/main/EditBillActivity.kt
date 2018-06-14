@@ -15,14 +15,14 @@ import android.widget.Toast
 import com.example.financeapp.R
 import com.example.financeapp.adapter.SpinnerCountBillAdapter
 import com.example.financeapp.base.BaseActivity
+import com.example.financeapp.base.GoogleApiClientBaseActivity
 import com.example.financeapp.network.Model
 
 import kotlinx.android.synthetic.main.activity_edit_bill.*
 import kotlinx.android.synthetic.main.content_edit_bill.*
 
-class EditBillActivity : BaseActivity() {
+class EditBillActivity : GoogleApiClientBaseActivity() {
 
-    private lateinit var nameBill: String
     var color: Int = 0
     var colorPosition: Int = 0
 
@@ -31,14 +31,21 @@ class EditBillActivity : BaseActivity() {
 
     private lateinit var listBills: ArrayList<Model.Bill>
 
+    lateinit var oldBillName: String
+    lateinit var newBillName: String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_bill)
         setSupportActionBar(toolbarEditBill)
 
-        listBills = dbHelper.getBillsFromDB()
+        listBills = editBillActivityViewModel.getBillsFromDB()
 
-        edNewNameBill.setText(intent.getStringExtra("nameBill"))
+        oldBillName = intent.getStringExtra("nameBill")
+
+        edNewNameBill.setText(oldBillName)
+
+        edNewNameBill.setSelection(edNewNameBill.text.length)  // Курсор в конец текста
 
         dialogSave = AlertDialog.Builder(this)
                 .setTitle(resources.getText(R.string.title_ad_new_bill))
@@ -58,7 +65,9 @@ class EditBillActivity : BaseActivity() {
         dialogDelete = AlertDialog.Builder(this)
                 .setMessage(resources.getText(R.string.message_delete_bill))
                 .setPositiveButton(resources.getText(R.string.btn_yes), DialogInterface.OnClickListener { dialog, which ->
-                    dbHelper.deleteBill(edNewNameBill.text.toString())
+//                    dbHelper.deleteBill(editBillActivityViewModel.getBillId(edNewNameBill.text.toString()))
+
+                    editBillActivityViewModel.deleteBill(edNewNameBill.text.toString())
                     finish()
                 })
                 .setNegativeButton(resources.getText(R.string.btn_no), DialogInterface.OnClickListener { dialog, which ->
@@ -127,9 +136,15 @@ class EditBillActivity : BaseActivity() {
                     Snackbar.make(window.decorView, resources.getText(R.string.input_please_name_bill), Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show()
                 } else {
-                    nameBill = edNewNameBill.text.toString()
+                    newBillName = edNewNameBill.text.toString()
 
-                    dbHelper.editBill(nameBill, color, colorPosition, 0)
+//                    dbHelper.editBill(oldBillName, newBillName, color, colorPosition, 0)
+
+//                    dbHelper.updateRecordsBill(oldBillName, newBillName)
+
+                    editBillActivityViewModel.editBill(oldBillName, newBillName, color, colorPosition)
+
+                    editBillActivityViewModel.updateRecordsBill(oldBillName, newBillName)
 
                     finish()
                 }

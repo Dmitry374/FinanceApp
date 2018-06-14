@@ -37,7 +37,12 @@ class RecyclerRecordsAdapter(private var mCtx: Context, private var list: List<M
         holder.tvNameBillRecycler.text = list[position].bill
 
         holder.tvSumOperation.setTextColor(list[position].color)
-        holder.tvSumOperation.text = "${list[position].sumOp} руб."
+
+        if (list[position].type == mCtx.resources.getText(R.string.button_add_record_consumption)){  // Если тип - расход
+            holder.tvSumOperation.text = "- ${list[position].sum} руб."
+        } else {
+            holder.tvSumOperation.text = "${list[position].sum} руб."
+        }
         holder.tvDateOperation.text = list[position].date
 
         holder.bind(list[position], listener, position)
@@ -60,8 +65,8 @@ class RecyclerRecordsAdapter(private var mCtx: Context, private var list: List<M
         val tvSumOperation = itemView.findViewById<TextView>(R.id.tvSumOperation)!!
         val tvDateOperation = itemView.findViewById<TextView>(R.id.tvDateOperation)!!
 
-        fun bind(link: Model.Record, listener: OnItemClickListener, position: Int) {
-            itemView.setOnClickListener { listener.onItemClick(link, position) }
+        fun bind(record: Model.Record, listener: OnItemClickListener, position: Int) {
+            itemView.setOnClickListener { listener.onItemClick(record, position) }
         }
     }
 

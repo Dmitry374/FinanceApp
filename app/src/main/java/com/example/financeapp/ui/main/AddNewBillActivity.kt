@@ -9,19 +9,14 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
+import android.widget.Toast
 import com.example.financeapp.R
 import com.example.financeapp.adapter.SpinnerCountBillAdapter
-import com.example.financeapp.base.BaseActivity
+import com.example.financeapp.base.GoogleApiClientBaseActivity
 import kotlinx.android.synthetic.main.activity_add_new_bill.*
-import java.text.DecimalFormat
-import android.app.Activity
-import android.content.Intent
-import android.util.Log
-import android.view.inputmethod.InputMethodManager
-import android.widget.Toast
 
 
-class AddNewBillActivity : BaseActivity() {
+class AddNewBillActivity : GoogleApiClientBaseActivity() {
 
     private lateinit var nameBill: String
     private lateinit var amountBill: String
@@ -71,6 +66,7 @@ class AddNewBillActivity : BaseActivity() {
             }
         }
 
+//        Массив цветов
         val listColors = resources.getIntArray(R.array.colorSpinnerBill)
 
         spinnerAddCountBill.adapter = SpinnerCountBillAdapter(this, listColors)
@@ -107,17 +103,17 @@ class AddNewBillActivity : BaseActivity() {
 //                val imm = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
 //                imm.hideSoftInputFromWindow(window.decorView.windowToken, 0)
 
-                if (edNameBill.text.toString() == ""){
+                if (edNameBill.text.toString() == "" || edInitialValueBill.text.toString() == ""){
                     Snackbar.make(window.decorView, resources.getText(R.string.input_please_name_bill), Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show()
                 } else {
                     nameBill = edNameBill.text.toString()
                     amountBill = edInitialValueBill.text.toString()
 
-                    if(dbHelper.isBillExist(nameBill)){
+                    if(isBillExist(nameBill)){
                         Toast.makeText(this, resources.getText(R.string.this_bill_exist), Toast.LENGTH_SHORT).show()
                     } else {
-                        dbHelper.addNewBill(nameBill, amountBill, "RUB", color, colorPosition, 0)
+                        addNewBillActivityViewModel.addNewBill(nameBill, amountBill, "RUB", color, colorPosition, 0)
                         finish()
                     }
                 }
@@ -127,4 +123,9 @@ class AddNewBillActivity : BaseActivity() {
             else -> return super.onOptionsItemSelected(item)
         }
     }
+
+    private fun isBillExist(nameBill: String): Boolean {
+        return addNewBillActivityViewModel.isBillExist(nameBill)
+    }
+
 }

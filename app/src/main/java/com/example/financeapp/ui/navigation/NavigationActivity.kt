@@ -3,6 +3,7 @@ package com.example.financeapp.ui.navigation
 //import android.support.v4.app.Fragment
 import android.annotation.SuppressLint
 import android.app.Fragment
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.design.widget.Snackbar
@@ -22,6 +23,7 @@ import com.example.financeapp.common.Constants.Companion.EMPTY_STRING
 import com.example.financeapp.network.Model
 import com.example.financeapp.ui.custom.CircleTransform
 import com.example.financeapp.ui.main.FragmentMain
+import com.example.financeapp.ui.profile.ProfileActivity
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
 import kotlinx.android.synthetic.main.activity_navigation.*
@@ -68,7 +70,7 @@ class NavigationActivity : GoogleApiClientBaseActivity(), /*HasFragmentInjector,
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_navigation)
-        setSupportActionBar(toolbar)
+        setSupportActionBar(toolbarNavigation)
 
 //        Запись в SPref статус: Вход выполнен
         sPrefHelper.setSignInAccount(true)
@@ -104,9 +106,12 @@ class NavigationActivity : GoogleApiClientBaseActivity(), /*HasFragmentInjector,
         // Log Out
         imgProfile.setOnClickListener {
 
-            navigationActivityViewModel.logOut(mGoogleApiClient)
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
 
-            navigationActivityViewModel.deleteAllData()
+//            navigationActivityViewModel.logOut(mGoogleApiClient)
+//
+//            navigationActivityViewModel.deleteAllData()
 
         }
     }
@@ -217,12 +222,14 @@ class NavigationActivity : GoogleApiClientBaseActivity(), /*HasFragmentInjector,
                 // records
                 return recordsFragment
             }
-//            2 -> {
-//
-//            }
-//            3 -> {
-//
-//            }
+            2 -> {
+//                credit calculator
+                return fragmentCreditCalculator
+            }
+            3 -> {
+//                exchange rates
+                return fragmentExchangeRates
+            }
 //
 //            4 -> {
 //
@@ -232,7 +239,11 @@ class NavigationActivity : GoogleApiClientBaseActivity(), /*HasFragmentInjector,
     }
 
     private fun setToolbarTitle() {
-        supportActionBar!!.setTitle(activityTitles[navItemIndex])
+        if (navItemIndex == 1){
+            supportActionBar!!.setTitle("")
+        } else {
+            supportActionBar!!.setTitle(activityTitles[navItemIndex])
+        }
     }
 
     private fun selectNavMenu() {
@@ -249,22 +260,27 @@ class NavigationActivity : GoogleApiClientBaseActivity(), /*HasFragmentInjector,
                 R.id.nav_main -> {
                     navItemIndex = 0
                     CURRENT_TAG = TAG_MAIN
+                    spinnerRecordsBills.visibility = View.GONE
                 }
                 R.id.nav_records -> {
                     navItemIndex = 1
                     CURRENT_TAG = TAG_RECORDS
+                    spinnerRecordsBills.visibility = View.VISIBLE
                 }
                 R.id.nav_credit_calculator -> {
                     navItemIndex = 2
                     CURRENT_TAG = TAG_CREDIT_CALCULATOR
+                    spinnerRecordsBills.visibility = View.GONE
                 }
-                R.id.nav_reminders -> {
-                    navItemIndex = 3
-                    CURRENT_TAG = TAG_REMINDERS
-                }
+//                R.id.nav_reminders -> {
+//                    navItemIndex = 3
+//                    CURRENT_TAG = TAG_REMINDERS
+//                    spinnerRecordsBills.visibility = View.INVISIBLE
+//                }
                 R.id.nav_exchange_rates -> {
-                    navItemIndex = 4
+                    navItemIndex = 3
                     CURRENT_TAG = TAG_EXCHANGE_RATES
+                    spinnerRecordsBills.visibility = View.GONE
                 }
 //                R.id.nav_about_us -> {
 //                    // launch new intent instead of loading fragment
@@ -281,6 +297,7 @@ class NavigationActivity : GoogleApiClientBaseActivity(), /*HasFragmentInjector,
                 else -> {
                     navItemIndex = 0
                     CURRENT_TAG = TAG_MAIN
+                    spinnerRecordsBills.visibility = View.GONE
                 }
             }
 
@@ -300,7 +317,7 @@ class NavigationActivity : GoogleApiClientBaseActivity(), /*HasFragmentInjector,
         })
 
 
-        val actionBarDrawerToggle = object : ActionBarDrawerToggle(this, drawer_layout, toolbar, R.string.openDrawer, R.string.closeDrawer) {
+        val actionBarDrawerToggle = object : ActionBarDrawerToggle(this, drawer_layout, toolbarNavigation, R.string.openDrawer, R.string.closeDrawer) {
 
             override fun onDrawerClosed(drawerView: View?) {
                 // Code here will be triggered once the drawer closes as we dont want anything to happen so we leave this blank
@@ -335,6 +352,7 @@ class NavigationActivity : GoogleApiClientBaseActivity(), /*HasFragmentInjector,
                 navItemIndex = 0
                 CURRENT_TAG = TAG_MAIN
                 loadHomeFragment()
+                spinnerRecordsBills.visibility = View.GONE
                 return
             }
         }

@@ -56,7 +56,7 @@
                     </LinearLayout>
 
                     <View
-                        android:layout_width="fill_parent"
+                        android:layout_width="match_parent"
                         android:layout_height="0.5dp"
                         android:background="@color/colorLineGrey" />
 
@@ -144,6 +144,7 @@
                             android:padding="16dp">
 
                             <TextView
+                                android:id="@+id/tvBalanceTextCard"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentLeft="true"
@@ -154,7 +155,7 @@
                                 android:textStyle="bold" />
 
                             <ImageView
-                                android:id="@+id/settingsCard"
+                                android:id="@+id/settingsCardBalance"
                                 android:layout_width="20dp"
                                 android:layout_height="20dp"
                                 android:layout_alignParentEnd="true"
@@ -212,6 +213,7 @@
                             android:padding="16dp">
 
                             <TextView
+                                android:id="@+id/tvTitleLastRecords"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentLeft="true"
@@ -239,11 +241,91 @@
                             android:layout_marginBottom="10dp"
                             android:gravity="center">
 
-                            <android.support.v7.widget.RecyclerView
-                                android:id="@+id/recyclerLastRecord"
+                            <!--<android.support.v7.widget.RecyclerView-->
+                                <!--android:id="@+id/recyclerLastRecord"-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="match_parent">-->
+                            <!--</android.support.v7.widget.RecyclerView>-->
+
+                            <android.support.design.widget.CoordinatorLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent">
-                            </android.support.v7.widget.RecyclerView>
+
+                                <TextView
+                                    android:id="@+id/no_records_text"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:textSize="14sp"
+                                    android:padding="16dp"
+                                    android:gravity="center"
+                                    android:layout_gravity="center_vertical"
+                                    android:textAlignment="center"
+                                    android:visibility="gone"
+                                    android:text="@string/text_no_last_records"/>
+
+                                <android.support.v7.widget.RecyclerView
+                                    android:id="@+id/recyclerLastRecord"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent">
+                                </android.support.v7.widget.RecyclerView>
+
+                            </android.support.design.widget.CoordinatorLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/linAddition"
+                            android:orientation="vertical"
+                            android:layout_marginBottom="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <!--<Button-->
+                                <!--android:id="@+id/btnShowMoreRecords"-->
+                                <!--android:layout_marginLeft="5dp"-->
+                                <!--android:layout_marginStart="5dp"-->
+                                <!--android:layout_marginRight="5dp"-->
+                                <!--android:layout_marginEnd="5dp"-->
+                                <!--style="@style/Widget.AppCompat.Button.Borderless.Colored"-->
+                                <!--android:gravity="start|center_vertical"-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:text="@string/text_button_more_records" />-->
+
+                            <RelativeLayout
+                                android:layout_marginTop="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <ImageView
+                                    android:layout_width="25dp"
+                                    android:layout_height="25dp"
+                                    android:layout_alignParentLeft="true"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_alignParentTop="true"
+                                    android:layout_gravity="start"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginStart="10dp"
+                                    app:srcCompat="@mipmap/ic_list_records"
+                                    android:id="@+id/imageView" />
+
+                                <TextView
+                                    android:id="@+id/tvInfoKolRecords"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Последние 5 записей"
+                                    android:textSize="14sp"
+                                    android:textColor="#777777"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginLeft="12dp"
+                                    android:layout_marginStart="12dp"
+                                    android:layout_toEndOf="@+id/imageView"
+                                    android:layout_toRightOf="@+id/imageView" />
+
+                            </RelativeLayout>
+
+
 
                         </LinearLayout>
 

@@ -67,9 +67,20 @@
         <activity
             android:name=".ui.registration.RegAuthActivity"
             android:label="@string/title_activity_reg_auth"
-            android:theme="@style/AppTheme"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ui.main.EditBalanceTextActivity"
+            android:label="@string/title_activity_edit_balance_text"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ui.main.EditLastRecordsTextActivity"
+            android:label="@string/title_activity_edit_last_records_text"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ui.profile.ProfileActivity"
+            android:label="@string/title_activity_profile"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

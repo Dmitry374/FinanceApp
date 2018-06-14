@@ -3,13 +3,17 @@ package com.example.financeapp.ui.registration
 import android.annotation.SuppressLint
 import android.app.ProgressDialog
 import android.os.Bundle
+import android.support.v7.widget.Toolbar
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.example.financeapp.R
+import com.example.financeapp.base.BaseFragment
 import com.example.financeapp.base.BasePerFragment
+import com.example.financeapp.common.Constants.Companion.REGISTER_OWN
+import com.example.financeapp.common.Constants.Companion.RESPONSE_SUCCESS
 import com.example.financeapp.network.Model
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -17,9 +21,9 @@ import io.reactivex.functions.Consumer
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_sign_in.*
 
-class FragmentSignIn : BasePerFragment() {
+class FragmentSignIn : BaseFragment() {
 
-    private val TAG = FragmentRegistration::class.java.simpleName
+    private val TAG = FragmentSignIn::class.java.simpleName
 
     private var progressDialog: ProgressDialog? = null
 
@@ -32,6 +36,9 @@ class FragmentSignIn : BasePerFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val view: View = inflater.inflate(R.layout.fragment_sign_in, container, false)
+
+//        Имя Toolbar
+        activity.title = getText(R.string.text_authorisation)
 
         return view
     }
@@ -73,18 +80,17 @@ class FragmentSignIn : BasePerFragment() {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
-                        object : Consumer<List<Model.User>> {
+                        object : Consumer<String> {
                             @SuppressLint("SetTextI18n")
                             @Throws(Exception::class)
-                            override fun accept(user: List<Model.User>) {
+                            override fun accept(response: String) {
                                 progressDialog!!.dismiss()
                                 Log.i("myLogs", "$TAG RxJava2: Response from server ...")
-                                fragmentSignInViewModel.insertDataInLocalDB(user.get(0).name, user.get(0).surname, user.get(0).email, user.get(0).photourl, user.get(0).password, user.get(0).gender, user.get(0).datebirth, 1)
-//                                Вызов рекурсивного метода или на следующее активити
-                                if (fragmentSignInViewModel.getUserCount() == 0){
-                                    signInUser(email, password)
+
+                                if (response == RESPONSE_SUCCESS){
+                                    commonMethod.goSyncScreen(REGISTER_OWN, email, password)
                                 } else {
-                                    commonMethod.goNavigationScreen()
+                                    Toast.makeText(activity, getText(R.string.text_not_correct_data), Toast.LENGTH_SHORT).show()
                                 }
 
                             }

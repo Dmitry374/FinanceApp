@@ -20,9 +20,16 @@
         <item>Главная</item>
         <item>Записи</item>
         <item>Кредитный калькулятор</item>
-        <item>Напоминания</item>
         <item>Курсы валют</item>
     </string-array>
+
+    <!--<string-array name="nav_item_activity_titles">-->
+        <!--<item>Главная</item>-->
+        <!--<item>Записи</item>-->
+        <!--<item>Кредитный калькулятор</item>-->
+        <!--<item>Напоминания</item>-->
+        <!--<item>Курсы валют</item>-->
+    <!--</string-array>-->
 
     <string name="try_later">Попробуйте позже !!!</string>
     <string name="text_progress_sync">Синхронизация …</string>

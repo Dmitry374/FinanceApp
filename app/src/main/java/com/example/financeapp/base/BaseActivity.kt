@@ -13,6 +13,8 @@ import com.example.financeapp.di.modules.BaseActivityModule
 import com.example.financeapp.network.Api
 import com.example.financeapp.network.NetworkHelper
 import com.example.financeapp.sharedpreference.SharedPreferenceHelper
+import com.example.financeapp.ui.creditcalculator.FragmentCreditCalculator
+import com.example.financeapp.ui.exchangerates.FragmentExchangeRates
 import com.example.financeapp.ui.main.FragmentMain
 import com.example.financeapp.ui.records.FragmentRecords
 import com.example.financeapp.ui.registration.FragmentRegistration
@@ -38,6 +40,12 @@ abstract class BaseActivity : AppCompatActivity() {
 
     @Inject
     lateinit var signInFragment: FragmentSignIn
+
+    @Inject
+    lateinit var fragmentCreditCalculator: FragmentCreditCalculator
+
+    @Inject
+    lateinit var fragmentExchangeRates: FragmentExchangeRates
 
     @Inject
     lateinit var dbHelper: DBHelper

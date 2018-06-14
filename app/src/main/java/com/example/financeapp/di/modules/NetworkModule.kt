@@ -7,6 +7,7 @@ import com.example.financeapp.common.Constants.Companion.BASE_URL
 import com.example.financeapp.db.DBHelper
 import com.example.financeapp.network.Api
 import com.example.financeapp.network.NetworkHelper
+import com.example.financeapp.sharedpreference.SharedPreferenceHelper
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -23,8 +24,8 @@ class NetworkModule(private val context: Context) {
 
     @Provides
     @Singleton
-    fun provideNetworkHelper(commonMethod: CommonMethod, api: Api, dbHelper: DBHelper) =
-            NetworkHelper(context, commonMethod, api, dbHelper)
+    fun provideNetworkHelper(commonMethod: CommonMethod, api: Api, sharedPreferenceHelper: SharedPreferenceHelper, dbHelper: DBHelper) =
+            NetworkHelper(context, commonMethod, api, sharedPreferenceHelper, dbHelper)
 
     @Provides
     @Singleton

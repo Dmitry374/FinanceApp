@@ -3,6 +3,7 @@ package com.example.financeapp.ui.registration
 import android.annotation.SuppressLint
 import android.app.ProgressDialog
 import android.os.Bundle
+import android.support.v7.widget.Toolbar
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -34,6 +35,9 @@ class FragmentRegistration : BaseFragment() {
                               savedInstanceState: Bundle?): View? {
         val view: View = inflater.inflate(R.layout.fragment_registration, container, false)
 
+//        Имя Toolbar
+        activity.title = getText(R.string.text_registration)
+
         return view
     }
 
@@ -52,6 +56,8 @@ class FragmentRegistration : BaseFragment() {
             if (edEmailRegister.text.toString().trim() == ""
                     || edPasswordRegister.text.toString().trim() == ""){
                 Toast.makeText(activity, getText(R.string.text_fill_all_the_fields), Toast.LENGTH_SHORT).show()
+            } else if (edPasswordRegister.text.toString().trim().length < 6) {
+                Toast.makeText(activity, getText(R.string.error_length_password), Toast.LENGTH_SHORT).show()
             } else {
 //                Показ ProgressDialog
                 progressDialog!!.show()

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import android.view.View
 import android.widget.Toast
 import com.example.financeapp.R
 import com.example.financeapp.adapter.RecyclerSettingsBillAdapter
@@ -31,13 +32,21 @@ class SettingsBillActivity : BaseActivity() {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setDisplayShowHomeEnabled(true)
 
-        toolbarBillsSettings.setNavigationOnClickListener { finish() }
+        toolbarBillsSettings.setNavigationOnClickListener { finish() }  // Стрелка назад
 
         updateRecycler()
 
     }
 
     private fun updateRecycler(){
+
+        if (dbHelper.getBillCount() == 0){
+            no_bills_text.visibility = View.VISIBLE
+            recyclerBillsSettings.visibility = View.GONE
+        } else {
+            no_bills_text.visibility = View.GONE
+            recyclerBillsSettings.visibility = View.VISIBLE
+        }
 
         listBills = dbHelper.getBillsFromDB()
 
@@ -46,7 +55,7 @@ class SettingsBillActivity : BaseActivity() {
                 val intent = Intent(this@SettingsBillActivity, EditBillActivity::class.java)
 //                Отправить имя счета и цвет
                 intent.putExtra("nameBill", listBills[position].name)
-                intent.putExtra("colorPosition", listBills[position].colorPosition)
+                intent.putExtra("colorPosition", listBills[position].color_position)
                 startActivity(intent)
             }
 

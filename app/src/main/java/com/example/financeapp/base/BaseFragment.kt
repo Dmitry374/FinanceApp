@@ -11,6 +11,8 @@ import com.example.financeapp.di.modules.BaseFragmentModule
 import com.example.financeapp.network.Api
 import com.example.financeapp.network.NetworkHelper
 import com.example.financeapp.sharedpreference.SharedPreferenceHelper
+import com.example.financeapp.ui.main.FragmentMain
+import com.example.financeapp.ui.records.FragmentRecords
 import com.example.financeapp.ui.registration.FragmentRegistration
 import com.example.financeapp.ui.registration.FragmentSignIn
 import com.squareup.picasso.Picasso
@@ -36,6 +38,9 @@ abstract class BaseFragment : Fragment() {
 
     @Inject
     lateinit var networkHelper: NetworkHelper
+
+    @Inject
+    lateinit var recordsFragment: FragmentRecords
 
     @Inject
     lateinit var registrationFragment: FragmentRegistration

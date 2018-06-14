@@ -6,8 +6,13 @@ import com.example.financeapp.di.component.DaggerGoogleApiClientComponent
 import com.example.financeapp.di.modules.GoogleApiModule
 import com.example.financeapp.ui.authorisation.AuthorisationActivityViewModel
 import com.example.financeapp.ui.authorisation.di.AuthorisationActivityModule
+import com.example.financeapp.ui.main.AddNewBillActivityViewModel
+import com.example.financeapp.ui.main.AddRecordActivityViewModel
+import com.example.financeapp.ui.main.EditBillActivityViewModel
 import com.example.financeapp.ui.navigation.NavigationActivityViewModel
 import com.example.financeapp.ui.navigation.di.NavigationActivityModule
+import com.example.financeapp.ui.profile.ProfileActivityViewModel
+import com.example.financeapp.ui.profile.di.ProfileActivityModule
 import com.example.financeapp.ui.start.StartActivityViewModel
 import com.example.financeapp.ui.sync.SyncActivityViewModel
 import com.example.financeapp.ui.sync.di.SyncActivityModule
@@ -32,6 +37,18 @@ abstract class GoogleApiClientBaseActivity : BaseActivity(), GoogleApiClient.OnC
     @Inject
     lateinit var authorisationActivityViewModule: AuthorisationActivityViewModel
 
+    @Inject
+    lateinit var addNewBillActivityViewModel: AddNewBillActivityViewModel
+
+    @Inject
+    lateinit var editBillActivityViewModel: EditBillActivityViewModel
+
+    @Inject
+    lateinit var addRecordActivityViewModel: AddRecordActivityViewModel
+
+    @Inject
+    lateinit var profileActivityViewModel: ProfileActivityViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -42,8 +59,9 @@ abstract class GoogleApiClientBaseActivity : BaseActivity(), GoogleApiClient.OnC
 //                .googleApiModule(GoogleApiModule(this, this))
                 .googleApiModule(GoogleApiModule(this))
                 .navigationActivityModule(NavigationActivityModule(this))
-                .syncActivityModule(SyncActivityModule())
+                .syncActivityModule(SyncActivityModule(this))
                 .authorisationActivityModule(AuthorisationActivityModule(this))
+                .profileActivityModule(ProfileActivityModule(this))
                 .build()
 
         googleApiClientComponent.inject(this)

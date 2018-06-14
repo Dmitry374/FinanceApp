@@ -2,6 +2,8 @@ package com.example.financeapp.ui.start
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import com.example.financeapp.R
 import com.example.financeapp.base.GoogleApiClientBaseActivity
 import com.example.financeapp.ui.navigation.NavigationActivity
@@ -19,6 +21,9 @@ class StartActivity : GoogleApiClientBaseActivity() {
         handler.postDelayed({
 
 //            Если вход выполнен, переходим сразу в приложение
+            val b = sPrefHelper.getSignInAccount()
+            Toast.makeText(this, "b = $b", Toast.LENGTH_SHORT).show()
+            Log.d("myLogs", "StartActivity b = $b")
             if (sPrefHelper.getSignInAccount()){
                 goNavigationScreen()
             } else {

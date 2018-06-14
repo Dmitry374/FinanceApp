@@ -71,6 +71,7 @@
                     android:layout_toLeftOf="@+id/tvEditBillCurrency"
                     android:layout_toRightOf="@+id/tvSignEditBill"
                     android:layout_toStartOf="@+id/tvEditBillCurrency"
+                    android:background="@android:color/transparent"
                     android:ems="10"
                     android:inputType="numberDecimal" />
 
@@ -240,17 +241,17 @@
 
             </LinearLayout>
 
-            <Button
-                android:id="@+id/btnAddNewRecord"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginEnd="16dp"
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/button_add_record" />
+            <!--<Button-->
+                <!--android:id="@+id/btnAddNewRecord"-->
+                <!--android:layout_marginTop="20dp"-->
+                <!--android:layout_marginLeft="16dp"-->
+                <!--android:layout_marginStart="16dp"-->
+                <!--android:layout_marginRight="16dp"-->
+                <!--android:layout_marginEnd="16dp"-->
+                <!--style="@style/Widget.AppCompat.Button.Colored"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="@string/button_add_record" />-->
 
 
 

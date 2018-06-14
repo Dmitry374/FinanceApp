@@ -16,6 +16,10 @@
     <color name="color_transfer">#000000</color>
 
 
+    <color name="color_spinner_dropdown">#ecebeb</color>
+    <color name="color_text_spinner_dropdown">#151515</color>
+
+
 
     <!--<color name="bright_pink">#FF007F</color>-->
     <!--<color name="red">#FF0000</color>-->
