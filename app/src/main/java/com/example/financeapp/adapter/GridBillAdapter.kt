@@ -70,7 +70,11 @@ class GridBillAdapter(private val context: Context, private val picasso: Picasso
 
             tvItemGridNameCount.text = list[position].name
 
-            amountOnBill = Math.rint(100.0 * (list[position].amount.toDouble()))/100.0
+            try {
+                amountOnBill = Math.rint(100.0 * (list[position].amount.toDouble()))/100.0
+            } catch (e: java.lang.NumberFormatException){
+                amountOnBill = 0.0
+            }
             decimalFormat = DecimalFormat("#,###.## руб")
 
 //            tvItemGridAmount.text = "${list[position].amount} руб."

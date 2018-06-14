@@ -2,6 +2,7 @@ package com.example.financeapp.di.modules
 
 import android.app.ProgressDialog
 import android.content.Context
+import com.example.financeapp.UnsafeOkHttpClient
 import com.example.financeapp.common.CommonMethod
 import com.example.financeapp.common.Constants.Companion.BASE_URL
 import com.example.financeapp.db.DBHelper
@@ -58,12 +59,19 @@ class NetworkModule(private val context: Context) {
         return Cache(context.cacheDir, cacheSize.toLong())
     }
 
+//    @Provides
+//    @Singleton
+//    fun provideOkhttpClient(cache: Cache): OkHttpClient {
+//        val client = OkHttpClient.Builder()
+//        client.cache(cache)
+//        return client.build()
+//    }
+
     @Provides
     @Singleton
-    fun provideOkhttpClient(cache: Cache): OkHttpClient {
-        val client = OkHttpClient.Builder()
-        client.cache(cache)
-        return client.build()
+    fun provideOkhttpClient(): OkHttpClient {
+        return UnsafeOkHttpClient.getUnsafeOkHttpClient();
+
     }
 
 }

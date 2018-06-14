@@ -410,7 +410,11 @@ class DBHelper(val context: Context)
         if (cursor.moveToFirst()){
             do {
 
-                balance += cursor.getString(cursor.getColumnIndex(KEY_AMOUNT_BILL)).toDouble()
+                try{
+                    balance += cursor.getString(cursor.getColumnIndex(KEY_AMOUNT_BILL)).toDouble()
+                } catch (e: java.lang.NumberFormatException){
+                    balance = 0.0
+                }
 
             } while (cursor.moveToNext())
 

@@ -239,7 +239,11 @@ class FragmentMain : BasePerFragment() {
 
                 fragmentMainViewModel.setRemindSelectedBill(position) // Запоминаем позицию выбранного счета
 
-                amountOnBill = listBills[position].amount.toDouble()
+                try {
+                    amountOnBill = listBills[position].amount.toDouble()
+                } catch (e: java.lang.NumberFormatException){
+                    amountOnBill = 0.0
+                }
                 amountOnBill = Math.rint(100.0 * amountOnBill)/100.0
                 tvBalanceCard.text = "${decimalFormat.format(amountOnBill)}."
 

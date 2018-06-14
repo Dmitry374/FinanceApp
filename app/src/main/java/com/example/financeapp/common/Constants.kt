@@ -4,6 +4,7 @@ class Constants {
     companion object {
         const val EMPTY_STRING = ""
         const val BASE_URL = "https://financeapp374.000webhostapp.com/"
+//        const val BASE_URL = "https://ffapp.000webhostapp.com/"
         const val CURRENCY_CRB_URL = "https://www.cbr-xml-daily.ru/"
 
         const val RESPONSE_SUCCESS = "success"
