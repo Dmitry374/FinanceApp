@@ -19,7 +19,6 @@
     <string-array name="nav_item_activity_titles">
         <item>Главная</item>
         <item>Записи</item>
-        <item>Кредитный калькулятор</item>
         <item>Курсы валют ЦБ</item>
     </string-array>
 
