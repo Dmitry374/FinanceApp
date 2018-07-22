@@ -1,6 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#42ba46</color>
+    <!--<color name="colorPrimary">#3F51B5</color>-->
+    <color name="colorPrimaryDark">#3d9f30</color>
+    <!--<color name="colorPrimaryDark">#303F9F</color>-->
+    <color name="colorAccent">#45d135</color>
+    <!--<color name="colorAccent">#FF4081</color>-->
+
+    <color name="colorLineGrey">#d2d2d2</color>
+
+    <color name="not_selected_card">#d1d0d0</color>
+
+    <color name="color_income">#58e750</color>
+    <color name="color_consumption">#f40f1e</color>
+    <color name="color_transfer">#000000</color>
+
+
+    <color name="color_spinner_dropdown">#ecebeb</color>
+    <color name="color_text_spinner_dropdown">#151515</color>
+
+    <color name="white">#ffffff</color>
+
+
+
+    <!--<color name="bright_pink">#FF007F</color>-->
+    <!--<color name="red">#FF0000</color>-->
+    <!--<color name="orange">#FF7F00</color>-->
+    <!--<color name="yellow">#dfdf00</color>-->
+    <!--<color name="chartreuse">#7FFF00</color>-->
+    <!--<color name="green">#00FF00</color>-->
+    <!--<color name="spring_green">#00FF7F</color>-->
+    <!--<color name="cyan">#00FFFF</color>-->
+    <!--<color name="azure">#007FFF</color>-->
+    <!--<color name="blue">#0000FF</color>-->
+    <!--<color name="violet">#7F00FF</color>-->
+    <!--<color name="magenta">#FF00FF</color>-->
+
+    <!--<array name="colorSpinnerBill">-->
+        <!--<item>@color/bright_pink</item>-->
+        <!--<item>@color/red</item>-->
+        <!--<item>@color/orange</item>-->
+        <!--<item>@color/yellow</item>-->
+        <!--<item>@color/chartreuse</item>-->
+        <!--<item>@color/green</item>-->
+        <!--<item>@color/spring_green</item>-->
+        <!--<item>@color/cyan</item>-->
+        <!--<item>@color/azure</item>-->
+        <!--<item>@color/blue</item>-->
+        <!--<item>@color/violet</item>-->
+        <!--<item>@color/magenta</item>-->
+    <!--</array>-->
+
+
+    <color name="dark_red">#c20505</color> 0
+    <color name="red">#FF0000</color> 1
+    <color name="light_red">#FA5858</color> 2
+
+    <color name="dark_orange">#DF3A01</color> 3
+    <color name="orange">#FF4000</color> 4
+    <color name="light_orange">#FE642E</color> 5
+
+    <color name="dark_brown">#8A4B08</color> 6
+    <color name="brown">#FF8000</color> 7
+    <color name="light_brown">#FE9A2E</color> 8
+
+    <color name="dark_yellow">#AEB404</color> 9
+    <color name="yellow">#D7DF01</color> 10
+    <color name="light_yellow">#F4FA58</color> 11
+
+    <color name="dark_green">#31B404</color> 12
+    <color name="green">#3ADF00</color> 13
+    <color name="light_green">#64FE2E</color> 14
+
+    <color name="dark_bluel">#088A85</color> 15
+    <color name="bluel">#01DFD7</color> 16
+    <color name="light_bluel">#81F7F3</color> 17
+
+    <color name="dark_blue">#013ADF</color> 18
+    <color name="blue">#0040FF</color> 19
+    <color name="light_blue">#2E64FE</color> 20
+
+    <color name="dark_purple">#8904B1</color> 21
+    <color name="purple">#A901DB</color> 22
+    <color name="light_purple">#BF00FF</color> 23
+
+    <color name="dark_pink">#DF0174</color> 24
+    <color name="pink">#FF0080</color> 25
+    <color name="light_pink">#FE2E9A</color> 26
+
+
+    <array name="colorSpinnerBill">
+        <item>@color/dark_red</item>
+        <item>@color/red</item>
+        <item>@color/light_red</item>
+
+        <item>@color/dark_orange</item>
+        <item>@color/orange</item>
+        <item>@color/light_orange</item>
+
+        <item>@color/dark_brown</item>
+        <item>@color/brown</item>
+        <item>@color/light_brown</item>
+
+        <item>@color/dark_yellow</item>
+        <item>@color/yellow</item>
+        <item>@color/light_yellow</item>
+
+        <item>@color/dark_green</item>
+        <item>@color/green</item>
+        <item>@color/light_green</item>
+
+        <item>@color/dark_bluel</item>
+        <item>@color/bluel</item>
+        <item>@color/light_bluel</item>
+
+        <item>@color/dark_blue</item>
+        <item>@color/bluel</item>
+        <item>@color/light_bluel</item>
+
+        <item>@color/dark_purple</item>
+        <item>@color/purple</item>
+        <item>@color/light_purple</item>
+
+        <item>@color/dark_pink</item>
+        <item>@color/pink</item>
+        <item>@color/light_pink</item>
+    </array>
+
+
 </resources>

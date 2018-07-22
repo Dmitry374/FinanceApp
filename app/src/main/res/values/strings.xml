@@ -3,6 +3,231 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="openDrawer">open_drawer</string>
+    <string name="closeDrawer">close_drawer</string>
 
-    <string name="action_settings">Settings</string>
+    <string name="fixer_io_api_key">e64ece36a6ffd9d6aa60d743047a8037</string>
+
+    <string name="action_settings">Настройки</string>
+
+    <!-- Authorisation Activity -->
+
+    <string name="text_registration">Регистрация</string>
+    <string name="text_authorisation">Авторизация</string>
+    <string name="text_sign_in">Войти</string>
+    <string name="text_email">Email</string>
+    <string name="text_password">Пароль</string>
+
+    <string name="text_title_create_new_account">Создать новый аккаунт</string>
+    <string name="text_title_sign_in">Мы рады Вашему возвращению!</string>
+
+    <string name="text_btn_register">Зарегистрироваться</string>
+    <string name="text_btn_sign_in">Войти</string>
+
+    <!-- Fragment Registration-->
+    <string name="text_progress_dialog">Подождите пожалуйста …</string>
+    <string name="text_user_already_exists">Пользователь с такой почтой уже существует</string>
+
+    <string name="text_fill_all_the_fields">Заполните все поля</string>
+    <string name="text_not_correct_data">Вы ввели неверные данные</string>
+
+    <!-- Navigation Drawer menu labels -->
+    <string name="nav_main">Главная</string>
+    <string name="nav_records">Записи</string>
+    <string name="nav_credit_calculator">Кредитный калькулятор</string>
+    <string name="nav_reminders">Напоминания</string>
+    <string name="nav_exchange_rates">Курсы валют ЦБ</string>
+
+    <!-- Toolbar titles when navigation menu item is selected -->
+    <string-array name="nav_item_activity_titles">
+        <item>Главная</item>
+        <item>Записи</item>
+        <item>Курсы валют ЦБ</item>
+    </string-array>
+
+    <!--<string-array name="nav_item_activity_titles">-->
+    <!--<item>Главная</item>-->
+    <!--<item>Записи</item>-->
+    <!--<item>Кредитный калькулятор</item>-->
+    <!--<item>Напоминания</item>-->
+    <!--<item>Курсы валют</item>-->
+    <!--</string-array>-->
+
+    <!-- Fragment Main-->
+    <string name="text_list_bills_empty">Список счетов пуст \nДобавьте новый счет</string>
+
+    <string name="text_balance">Баланс</string>
+    <string name="text_list_bills">Список счетов</string>
+    <string name="text_last_record">Последние записи</string>
+
+    <string name="text_no_last_records">Последних записей нет!</string>
+
+    <string name="try_later">Попробуйте позже !!!</string>
+    <string name="text_progress_sync">Синхронизация …</string>
+    <string name="try_again">Попробуйте еще раз</string>
+
+    <string name="check_internet_connection">Проверьте Интернет соединение !!!</string>
+    <string name="title_activity_add_new_bill">Новый счет</string>
+
+    <string name="text_button_more_records">Еще</string>
+    <string name="text_last">Последние</string>
+    <string name="text_word_record">записи(ей)</string>
+
+    <string name="item_menu_edit">Редактировать</string>
+
+    <!-- Edit Card Text -->
+    <string name="title_name">Название</string>
+    <string name="title_amount">Количество</string>
+    <string name="btn_menu_save">Сохранить</string>
+
+    <integer-array name="limit_last_records">
+        <item>5</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+        <item>25</item>
+        <item>30</item>
+    </integer-array>
+
+
+    <!-- Settings Bill Activity -->
+    <string name="settings_list_bills_empty">Список счетов пуст!</string>
+
+    <!-- Add Bill-->
+    <string name="add_name_bill">Название счета</string>
+    <string name="add_initial_value">Начальное значение</string>
+    <string name="add_color">Цвет</string>
+    <string name="input_please_name_bill">Заполните пожалуйста название счета и начальное значение</string>
+
+    <string name="create_new_bill">Создать новый счет</string>
+    <string name="title_activity_test">Test</string>
+
+    <string name="this_bill_exist">Счет с таким названием уже есть</string>
+
+    <string name="title_ad_new_bill">Выход</string>
+    <string name="message_ad_new_bill">Выйти без сохранения ?</string>
+    <string name="btn_yes">Да</string>
+    <string name="btn_no">Нет</string>
+
+    <!-- Add Record Activity -->
+    <string name="title_activity_add_record">Добавить новую запись</string>
+
+    <string name="button_add_record_income">Доход</string>
+    <string name="button_add_record_consumption">Расход</string>
+    <string name="button_add_record_transfer">Перевод</string>
+
+    <string name="text_select_category">Выберите категорию</string>
+    <string name="text_select_another_bill">Выберите другой счет для перевода</string>
+    <string name="text_select_bill_to_transfer">Выберите счет для перевода</string>
+
+    <string-array name="recordType">
+        <item>@string/button_add_record_income</item>
+        <item>@string/button_add_record_consumption</item>
+        <item>@string/button_add_record_transfer</item>
+    </string-array>
+
+    <string name="param_one_from_bill_v1">Со счета</string>
+    <string name="param_one_from_bill_v2">Счет</string>
+
+    <string name="param_two_from_bill_v1">На счет</string>
+    <string name="param_two_from_bill_v2">Категория</string>
+
+    <string name="button_add_record">Добавить</string>
+    <string name="button_delete_record">Удалить</string>
+
+    <string name="title_edit_record">Редактировать запись</string>
+
+    <!-- ListBillActivity -->
+    <string name="title_activity_list_bill">Счёт</string>
+    <string name="text_btn_add_new_record_list_bill">Добавить …</string>
+    <string name="text_btn_settings_new_record_list_bill">Настроить …</string>
+    <string name="enter_sum">Введите сумму</string>
+
+    <string name="title_activity_settings_bill">Настройки счетов</string>
+
+    <!-- EditBillActivity -->
+    <string name="title_activity_edit_bill">Редактировать счет</string>
+    <string name="add_name_edit_bill">Название счета</string>
+    <string name="add_color_edit_bill">Цвет</string>
+
+    <string name="save_changes_bill">Сохранить</string>
+    <string name="delete_bill">Удалить</string>
+
+    <!-- Dialog Delete -->
+    <string name="message_delete_bill">Вы действительно хотите удалить этот пункт?</string>
+
+    <!-- Category Activity -->
+    <string name="title_activity_category">Категория</string>
+
+    <string name="category_buy">Покупки</string>
+    <string name="category_food_and_drink">Еда и напитки</string>
+    <string name="category_house">Жилье</string>
+    <string name="category_transport">Транспорт</string>
+    <string name="category_vehicle">Транспортное средство</string>
+    <string name="category_games">Игры</string>
+    <string name="category_life">Жизненные потребности</string>
+    <string name="category_internet">Интернет</string>
+    <string name="category_phone">Телефон</string>
+    <string name="category_communication">Связь, ПК - Прочее</string>
+    <string name="category_finance_expenses">Финансовые расходы</string>
+    <string name="category_investments">Инвестиции</string>
+    <string name="category_income">Доходы</string>
+    <string name="category_other">Прочее</string>
+
+    <string name="string_empty">Пусто</string>
+    <string name="title_activity_reg_auth">RegAuthActivity</string>
+
+    <string name="title_activity_edit_balance_text">Баланс</string>
+    <string name="title_activity_edit_last_records_text">Последние записи</string>
+
+    <!-- Records Fragment -->
+
+    <string name="text_my_bills">Мои счета</string>
+    <string name="text_no_records">Записей нет!</string>
+
+    <!-- Fragment Credit Calculator -->
+
+    <string name="size_credit">Размер кредита</string>
+    <string name="time_credit">Срок кредита, месяцев</string>
+    <string name="percent_credit">Процентная ставка, % годовых</string>
+
+    <string-array name="typeofpay">
+        <item>Аннуитетный</item>
+        <item>Дифференцированный</item>
+    </string-array>
+
+    <string name="begin_of_pay">Начало выплат</string>
+
+    <string name="every_month_pay">Ежемесячные платежи</string>
+    <string name="total_will_be_paid">Всего будет выплачено</string>
+    <string name="credit_overpayments">Переплата по кредиту</string>
+    <string name="repayment_date">Дата выплаты кредита</string>
+
+    <!-- Profile Activity -->
+
+    <string name="title_activity_profile">Профиль</string>
+
+    <string name="text_name">Имя</string>
+    <string name="text_surname">Фамилия</string>
+    <string name="text_date_of_birth">Дата рождения</string>
+    <string name="text_empty">Пусто</string>
+    <string name="text_exit">Выйти</string>
+    <string name="text_select_gender">Выберите пол</string>
+
+    <string name="text_male">Мужской</string>
+    <string name="text_female">Женский</string>
+
+    <string-array name="select_gender_list">
+        <item>Пусто</item>
+        <item>Мужской</item>
+        <item>Женский</item>
+    </string-array>
+
+    <string name="text_change_password">Сменить пароль</string>
+    <string name="text_confirm_password">Подтверждение пароля</string>
+
+    <string name="error_length_password">Длина пароля должна быть не менее 6 символов</string>
+    <string name="error_password_must_coincide">Пароли должны совпадать</string>
+
 </resources>
+

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.financeapp.ui.main.SettingsBillActivity"
+    android:background="#ededed"
+    tools:showIn="@layout/activity_settings_bill">
+
+    <!--<android.support.v7.widget.RecyclerView-->
+        <!--android:id="@+id/recyclerBillsSettings"-->
+        <!--android:padding="2dp"-->
+        <!--android:clipToPadding="false"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
+    <!--</android.support.v7.widget.RecyclerView>-->
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/no_bills_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textSize="16sp"
+            android:padding="16dp"
+            android:gravity="center"
+            android:layout_gravity="center_vertical"
+            android:textAlignment="center"
+            android:visibility="gone"
+            android:text="@string/settings_list_bills_empty"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerBillsSettings"
+            android:padding="2dp"
+            android:clipToPadding="false"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </android.support.v7.widget.RecyclerView>
+
+    </android.support.design.widget.CoordinatorLayout>
+
+</LinearLayout>

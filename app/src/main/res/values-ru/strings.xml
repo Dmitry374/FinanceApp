@@ -1,0 +1,47 @@
+<resources>
+    <string name="app_name">FinanceApp</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="openDrawer">open_drawer</string>
+    <string name="closeDrawer">close_drawer</string>
+
+    <string name="action_settings">Настройки</string>
+
+    <!-- Navigation Drawer menu labels -->
+    <string name="nav_main">Главная</string>
+    <string name="nav_records">Записи</string>
+    <string name="nav_credit_calculator">Кредитный калькулятор</string>
+    <string name="nav_reminders">Напоминания</string>
+    <string name="nav_exchange_rates">Курсы валют ЦБ</string>
+
+    <!-- Toolbar titles when navigation menu item is selected -->
+    <string-array name="nav_item_activity_titles">
+        <item>Главная</item>
+        <item>Записи</item>
+        <item>Курсы валют ЦБ</item>
+    </string-array>
+
+    <!--<string-array name="nav_item_activity_titles">-->
+        <!--<item>Главная</item>-->
+        <!--<item>Записи</item>-->
+        <!--<item>Кредитный калькулятор</item>-->
+        <!--<item>Напоминания</item>-->
+        <!--<item>Курсы валют</item>-->
+    <!--</string-array>-->
+
+    <string name="try_later">Попробуйте позже !!!</string>
+    <string name="text_progress_sync">Синхронизация …</string>
+    <string name="try_again">Попробуйте еще раз</string>
+
+    <string name="check_internet_connection">Проверьте Интернет соединение !!!</string>
+    <string name="title_activity_add_new_bill">Новый счет</string>
+
+    <!-- Add Bill-->
+    <string name="add_name_bill">Название счета</string>
+    <string name="add_initial_value">Начальное значение</string>
+    <string name="add_color">Цвет</string>
+
+    <string name="create_new_bill">Создать новый счет</string>
+
+</resources>
