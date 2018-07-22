@@ -1,12 +1,10 @@
 package com.example.financeapp.ui.records
 
 //import android.support.v4.app.Fragment
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.widget.NestedScrollView
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.Toolbar
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,7 +15,6 @@ import com.example.financeapp.R
 import com.example.financeapp.adapter.RecyclerRecordsAdapter
 import com.example.financeapp.adapter.SpinnerBillsAllRecordsAdapter
 import com.example.financeapp.base.BasePerFragment
-import com.example.financeapp.common.Constants.Companion.EMPTY_STRING
 import com.example.financeapp.common.Constants.Companion.UPDATE_ROW
 import com.example.financeapp.network.Model
 import com.example.financeapp.ui.main.AddRecordActivity

@@ -4,7 +4,6 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import android.util.Log
 import com.example.financeapp.network.Model
 
 class DBHelper(val context: Context)
@@ -199,7 +198,22 @@ class DBHelper(val context: Context)
 
     }
 
-    fun updateInfAboutUser(name: String, surname: String, photoUrl: String, gender: String, dateOfBirth: String){
+    fun updateInfAboutUser(name: String, surname: String, photoUrl: String,
+                           gender: String, dateOfBirth: String, synchronise: Int){
+
+        val db: SQLiteDatabase = writableDatabase
+        val sql = "update $TABLE_USER set $KEY_NAME = '$name', $KEY_SURNAME = '$surname', " +
+                "$KEY_PHOTO_URL = '$photoUrl', $KEY_GENDER = '$gender', " +
+                "$KEY_DATE_OF_BIRTH = '$dateOfBirth', $KEY_SYNCHRONISE = '$synchronise';"
+        db.execSQL(sql)
+
+    }
+
+    fun updatePassword(password: String, synchronise: Int){
+
+        val db: SQLiteDatabase = writableDatabase
+        val sql = "update $TABLE_USER set $KEY_PASSWORD = '$password', $KEY_SYNCHRONISE = '$synchronise';"
+        db.execSQL(sql)
 
     }
 

@@ -58,7 +58,7 @@
 
     <string name="text_balance">Баланс</string>
     <string name="text_list_bills">Список счетов</string>
-    <string name="text_last_record">Послелдние записи</string>
+    <string name="text_last_record">Последние записи</string>
 
     <string name="text_no_last_records">Последних записей нет!</string>
 
@@ -178,7 +178,7 @@
     <string name="title_activity_reg_auth">RegAuthActivity</string>
 
     <string name="title_activity_edit_balance_text">Баланс</string>
-    <string name="title_activity_edit_last_records_text">Послелдние записи</string>
+    <string name="title_activity_edit_last_records_text">Последние записи</string>
 
     <!-- Records Fragment -->
 

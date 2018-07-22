@@ -3,7 +3,6 @@ package com.example.financeapp.ui.registration
 import android.annotation.SuppressLint
 import android.app.ProgressDialog
 import android.os.Bundle
-import android.support.v7.widget.Toolbar
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -43,6 +42,10 @@ class FragmentRegistration : BaseFragment() {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        picasso
+                .load(R.drawable.logo)
+                .into(imgLogoRegistration)
 
 //        Инициализация ProgressDialog
         progressDialog = ProgressDialog(activity)

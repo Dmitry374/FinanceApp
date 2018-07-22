@@ -2,22 +2,16 @@ package com.example.financeapp.ui.main
 
 import android.app.AlertDialog
 import android.content.DialogInterface
-import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
-import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
-import android.widget.Toast
 import com.example.financeapp.R
 import com.example.financeapp.adapter.SpinnerCountBillAdapter
-import com.example.financeapp.base.BaseActivity
 import com.example.financeapp.base.GoogleApiClientBaseActivity
 import com.example.financeapp.network.Model
-
 import kotlinx.android.synthetic.main.activity_edit_bill.*
 import kotlinx.android.synthetic.main.content_edit_bill.*
 

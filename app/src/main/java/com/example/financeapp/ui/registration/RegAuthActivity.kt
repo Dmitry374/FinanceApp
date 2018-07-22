@@ -2,13 +2,10 @@ package com.example.financeapp.ui.registration
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.Snackbar
-import android.support.v7.app.AppCompatActivity
-import android.util.Log
+import android.view.WindowManager
 import com.example.financeapp.R
 import com.example.financeapp.base.BaseActivity
 import com.example.financeapp.ui.authorisation.AuthorisationActivity
-
 import kotlinx.android.synthetic.main.activity_reg_auth.*
 
 class RegAuthActivity : BaseActivity() {
@@ -19,6 +16,8 @@ class RegAuthActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_reg_auth)
         setSupportActionBar(toolbarRegAuth)
+        window.setBackgroundDrawableResource(R.drawable.background)
+        this.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
 
         typeAction = intent.getStringExtra("typeAction")
 

@@ -1,7 +1,9 @@
 package com.example.financeapp.ui.authorisation
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.view.WindowManager
 import com.example.financeapp.R
 import com.example.financeapp.base.GoogleApiClientBaseActivity
 import com.example.financeapp.ui.registration.RegAuthActivity
@@ -15,10 +17,19 @@ class AuthorisationActivity : GoogleApiClientBaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if (Build.VERSION.SDK_INT < 16) {
+            window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                    WindowManager.LayoutParams.FLAG_FULLSCREEN)
+        }
         setContentView(R.layout.activity_authorisation)
+        window.setBackgroundDrawableResource(R.drawable.background)
 
         signInButtonGoogle.setSize(SignInButton.SIZE_WIDE)
-        signInButtonGoogle.setColorScheme(SignInButton.COLOR_DARK)
+        signInButtonGoogle.setColorScheme(SignInButton.COLOR_LIGHT)
+
+        picasso
+                .load(R.drawable.logo)
+                .into(imgLogoAuthorisation)
 
         signInButtonGoogle.setOnClickListener {
             val intent = authorisationActivityViewModule.googleApiClientRequest(mGoogleApiClient)

@@ -2,19 +2,12 @@ package com.example.financeapp.ui.main
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.Snackbar
-import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.view.View
 import com.example.financeapp.R
-
-import kotlinx.android.synthetic.main.activity_list_bill.*
-import android.widget.ArrayAdapter
-import android.widget.Toast
 import com.example.financeapp.adapter.ListBillsAdapter
 import com.example.financeapp.base.BaseActivity
 import com.example.financeapp.network.Model
-import kotlinx.android.synthetic.main.activity_add_new_bill.*
+import kotlinx.android.synthetic.main.activity_list_bill.*
 import kotlinx.android.synthetic.main.content_list_bill.*
 import kotlinx.android.synthetic.main.footer_list_bills.*
 

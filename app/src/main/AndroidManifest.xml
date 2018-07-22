@@ -46,14 +46,17 @@
             android:name=".ui.main.AddRecordActivity"
             android:label="@string/title_activity_add_record"
             android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateVisible|adjustResize" />
         <activity
             android:name=".ui.main.ListBillActivity"
             android:label="@string/title_activity_list_bill"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".ui.main.SettingsBillActivity"
             android:label="@string/title_activity_settings_bill"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".ui.main.EditBillActivity"
@@ -62,24 +65,30 @@
         <activity
             android:name=".ui.main.CategoryActivity"
             android:label="@string/title_activity_category"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".ui.registration.RegAuthActivity"
             android:label="@string/title_activity_reg_auth"
+            android:windowSoftInputMode="adjustResize"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".ui.main.EditBalanceTextActivity"
             android:label="@string/title_activity_edit_balance_text"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".ui.main.EditLastRecordsTextActivity"
             android:label="@string/title_activity_edit_last_records_text"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".ui.profile.ProfileActivity"
             android:label="@string/title_activity_profile"
-            android:theme="@style/AppTheme"></activity>
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+        </activity>
     </application>
 
 </manifest>

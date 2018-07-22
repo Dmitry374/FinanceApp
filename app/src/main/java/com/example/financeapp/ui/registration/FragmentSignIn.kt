@@ -3,7 +3,6 @@ package com.example.financeapp.ui.registration
 import android.annotation.SuppressLint
 import android.app.ProgressDialog
 import android.os.Bundle
-import android.support.v7.widget.Toolbar
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -11,10 +10,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.example.financeapp.R
 import com.example.financeapp.base.BaseFragment
-import com.example.financeapp.base.BasePerFragment
 import com.example.financeapp.common.Constants.Companion.REGISTER_OWN
 import com.example.financeapp.common.Constants.Companion.RESPONSE_SUCCESS
-import com.example.financeapp.network.Model
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.functions.Consumer
@@ -45,6 +42,10 @@ class FragmentSignIn : BaseFragment() {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        picasso
+                .load(R.drawable.logo)
+                .into(imgLogoSignIn)
 
 //        Инициализация ProgressDialog
         progressDialog = ProgressDialog(activity)

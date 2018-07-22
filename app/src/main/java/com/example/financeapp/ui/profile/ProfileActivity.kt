@@ -1,21 +1,9 @@
 package com.example.financeapp.ui.profile
 
-import android.os.Bundle
-import android.support.design.widget.Snackbar
-import android.support.v7.app.AppCompatActivity
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.example.financeapp.R
-import com.example.financeapp.base.GoogleApiClientBaseActivity
-import com.example.financeapp.common.Constants.Companion.EMPTY_STRING
-import com.example.financeapp.network.Model
-import com.example.financeapp.ui.custom.CircleTransform
-
-import kotlinx.android.synthetic.main.activity_profile.*
-import kotlinx.android.synthetic.main.content_profile.*
-import android.R.attr.data
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
+import android.content.Intent
+import android.os.Bundle
 import android.preference.PreferenceManager
 import android.view.Menu
 import android.view.MenuItem
@@ -24,7 +12,16 @@ import android.view.WindowManager
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_edit_last_records_text.*
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.example.financeapp.R
+import com.example.financeapp.base.GoogleApiClientBaseActivity
+import com.example.financeapp.common.Constants.Companion.EMPTY_STRING
+import com.example.financeapp.network.Model
+import com.example.financeapp.ui.custom.CircleTransform
+import com.example.financeapp.ui.navigation.NavigationActivity
+import kotlinx.android.synthetic.main.activity_profile.*
+import kotlinx.android.synthetic.main.content_profile.*
 import java.util.*
 
 class ProfileActivity : GoogleApiClientBaseActivity() {
@@ -32,6 +29,7 @@ class ProfileActivity : GoogleApiClientBaseActivity() {
     private lateinit var user: Model.User
 
     lateinit var dateOfBirth: String
+    lateinit var gender: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +42,8 @@ class ProfileActivity : GoogleApiClientBaseActivity() {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)    //   Стрелка
         supportActionBar!!.setDisplayShowHomeEnabled(true)
         toolbarProfile.setNavigationOnClickListener {
+            val intent = Intent(this, NavigationActivity::class.java)
+            startActivity(intent)
             finish()
         }
 
@@ -60,8 +60,9 @@ class ProfileActivity : GoogleApiClientBaseActivity() {
             btnSetDateOfBirthProfile.text = user.datebirth
         }
 
+        dateOfBirth = btnSetDateOfBirthProfile.text.toString()
+
         imgUserProfile.setOnClickListener {
-            sPrefHelper.getUserEmail()
             Toast.makeText(this, sPrefHelper.getUserEmail(), Toast.LENGTH_SHORT).show()
         }
 
@@ -108,7 +109,8 @@ class ProfileActivity : GoogleApiClientBaseActivity() {
             }
 
             override fun onItemSelected(parentView: AdapterView<*>, selectedItemView: View, position: Int, id: Long) {
-                Toast.makeText(this@ProfileActivity, listGender[position], Toast.LENGTH_SHORT).show()
+                gender = listGender[position]
+
             }
 
         }
@@ -139,19 +141,21 @@ class ProfileActivity : GoogleApiClientBaseActivity() {
             getDateOfBirth()
         }
 
-//        Change Password
-        btnChangePasswordProfile.setOnClickListener {
-            when {
-                edPasswordProfile.text.toString().trim().length < 6 -> tilPasswordProfile.error = getText(R.string.error_length_password)
-                edPasswordProfile.text.toString().trim() != edConfirmPasswordProfile.text.toString().trim() -> tilConfirmPasswordProfile.error = getText(R.string.error_password_must_coincide)
-                else -> {
-                    Toast.makeText(this, "All OK", Toast.LENGTH_SHORT).show()
-                    tilPasswordProfile.isErrorEnabled = false
-                    tilConfirmPasswordProfile.isErrorEnabled = false
-                }
-
-            }
-        }
+////        Change Password
+//        btnChangePasswordProfile.setOnClickListener {
+//            when {
+//                edPasswordProfile.text.toString().trim().length < 6 -> tilPasswordProfile.error = getText(R.string.error_length_password)
+//                edPasswordProfile.text.toString().trim() != edConfirmPasswordProfile.text.toString().trim() -> tilConfirmPasswordProfile.error = getText(R.string.error_password_must_coincide)
+//                else -> {
+//                    Toast.makeText(this, "All OK", Toast.LENGTH_SHORT).show()
+//                    tilPasswordProfile.isErrorEnabled = false
+//                    tilConfirmPasswordProfile.isErrorEnabled = false
+//
+//
+//                }
+//
+//            }
+//        }
 
 
 
@@ -173,7 +177,12 @@ class ProfileActivity : GoogleApiClientBaseActivity() {
             }
 
             R.id.btnCreateNewBill -> {
+                profileActivityViewModel.updateUserDate(edNameProfile.text.toString().trim(),
+                        edSurnameProfile.text.toString().trim(), "", gender, dateOfBirth, 0)
 
+                val intent = Intent(this, NavigationActivity::class.java)
+                startActivity(intent)
+                finish()
                 true
             }
 
@@ -191,9 +200,16 @@ class ProfileActivity : GoogleApiClientBaseActivity() {
 
         val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
             btnSetDateOfBirthProfile.text = "$dayOfMonth/${monthOfYear+1}/$year"
+            dateOfBirth = "$dayOfMonth/${monthOfYear+1}/$year"
         }, year, month, day)
         dpd.show()
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
 
+        val intent = Intent(this, NavigationActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
 }

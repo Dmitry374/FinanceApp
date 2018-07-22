@@ -2,14 +2,10 @@ package com.example.financeapp.ui.main
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.Snackbar
-import android.support.v7.app.AppCompatActivity
 import com.example.financeapp.R
 import com.example.financeapp.adapter.ListCategoryAdapter
 import com.example.financeapp.base.BaseActivity
 import com.example.financeapp.network.Model
-import kotlinx.android.synthetic.main.activity_add_record.*
-
 import kotlinx.android.synthetic.main.activity_category.*
 import kotlinx.android.synthetic.main.content_category.*
 

@@ -1,22 +1,32 @@
 package com.example.financeapp.ui.start
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
+import android.view.WindowManager
 import com.example.financeapp.R
 import com.example.financeapp.base.GoogleApiClientBaseActivity
 import com.example.financeapp.ui.navigation.NavigationActivity
+import kotlinx.android.synthetic.main.activity_start.*
 
 class StartActivity : GoogleApiClientBaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if (Build.VERSION.SDK_INT < 16) {
+            window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                    WindowManager.LayoutParams.FLAG_FULLSCREEN)
+        }
         setContentView(R.layout.activity_start)
+        window.setBackgroundDrawableResource(R.drawable.background)
 
         if (startActivityViewModel.getUserCountFromDB() == 0){
             sPrefHelper.clearIsSignValue()
         }
+
+        picasso
+                .load(R.drawable.logo)
+                .into(imgLogoText)
 
         handler.postDelayed({
 
@@ -27,7 +37,7 @@ class StartActivity : GoogleApiClientBaseActivity() {
 //                Иначе авторизируемся
                 commonMethod.goLogInScreen(sPrefHelper)
             }
-        }, 300)
+        }, 3000)
 
     }
 

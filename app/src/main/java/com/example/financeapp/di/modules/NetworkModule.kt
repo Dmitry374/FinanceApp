@@ -1,6 +1,5 @@
 package com.example.financeapp.di.modules
 
-import android.app.ProgressDialog
 import android.content.Context
 import com.example.financeapp.UnsafeOkHttpClient
 import com.example.financeapp.common.CommonMethod

@@ -1,7 +1,6 @@
 package com.example.financeapp.network
 
 import io.reactivex.Observable
-import retrofit2.Call
 import retrofit2.http.*
 
 interface Api {

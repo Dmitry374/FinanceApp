@@ -32,4 +32,11 @@ class ProfileActivityViewModel(private val context: Context,
         dbHelper.deleteAllData()
     }
 
+    fun updateUserDate(name: String, surname: String, photoUrl: String, gender: String,
+                       dateOfBirth: String, synchronise: Int){
+
+        dbHelper.updateInfAboutUser(name, surname, photoUrl, gender, dateOfBirth, synchronise)
+
+    }
+
 }
