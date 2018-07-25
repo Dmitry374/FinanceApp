@@ -53,4 +53,24 @@
 * Редактирование названия второй надписи и количества отображаемых элементов
 * Профиль пользователя
 
+## Техническая часть
+
+Для разработки приложения использовался язык Kotlin.
+
+Приложение разрабатывалось в соответствии с архитектурным паттерном MVVM.
+
+В разработки испоьзовались такие библиотеки как:
+
+* [Dagger 2](https://github.com/google/dagger)
+* [RxJava / RxAndroid](https://github.com/ReactiveX/RxAndroid)
+* [Retrofit](http://square.github.io/retrofit/)
+* [Picasso](http://square.github.io/picasso/)
+* [Glide](https://github.com/bumptech/glide)
+
+и другие ...
+
+Приложение является клиент-серверным. В качестве сервера я использовал хостинг https://www.000webhost.com/
+
+Серверная сторона написана на языке PHP.
+
 # Currently in develop ...
